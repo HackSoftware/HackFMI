@@ -1,0 +1,145 @@
+<div class="card card-container" id="register-form">
+  <div ng-show="error.show">
+    <span class="help-block">{{error.message}}</span>
+  </div>
+  <div class="row marketing" >
+    <form class="form-horizontal" name="registerForm" ng-submit="submitForm(registerForm.$valid)" novalidate>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Две имена:</label>
+        <div class="col-sm-9">
+          <input type="text" name="full_name" class="form-control" ng-model="user.full_name" required>
+          <div ng-show="registerForm.full_name.$error.required && registerForm.full_name.$touched">
+            <span class="help-block">Tова поле е задължително!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Email:</label>
+        <div class="col-sm-9">
+          <input type="email" name="email" class="form-control" ng-model="user.email" required>
+          <div ng-show="registerForm.email.$error.required && registerForm.email.$touched">
+            <span class="help-block">Tова поле е задължително!</span>
+          </div>
+          <div ng-show="registerForm.email.$invalid && registerForm.email.$touched">
+            <span class="help-block">Това не е валиден email</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Факултетен номер:</label>
+        <div class="col-sm-9">
+          <input type="number" name="number" class="form-control" ng-model="user.faculty_number" ng-minlength="3" ng-maxlength="10">
+          <div ng-show="registerForm.number.$touched && registerForm.number.$error.number">
+            <span class="help-block">Трябва да е число</span>
+          </div>
+          <div ng-show="registerForm.number.$touched && registerForm.number.$error.minlength">
+            <span class="help-block">Прекалено кратко</span>
+          </div>
+          <div ng-show="registerForm.number.$touched && registerForm.number.$error.maxlength">
+            <span class="help-block">Прекалено дълго</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3  control-label">Вегетарианец съм:</label>
+        <div class="col-sm-9">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="is_vegetarian" ng-model="user.is_vegetarian" value="true">
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Размер на тениска:</label>
+        <div class="col-sm-2">
+          <select  class="form-control" ng-model="user.shirt_size">
+            <option value="1">S</option>
+            <option value="2">M</option>
+            <option value="3">L</option>
+            <option value="4">XL</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3  control-label">Владея:</label>
+        <div class="col-sm-9">
+          <div class="checkbox"  ng-repeat="skill in skills">
+            <label>
+              <input type="checkbox" name="known_skills" checklist-model="user.known_skills" checklist-value="skill.id" ng-required="!someSelected(user.known_skills)"> {{skill.name}}
+            </label>
+          </div>
+          <span class="help-block" ng-show="(user.skills.length < 1)">
+            Отбележи свойте умения. Така по-лесно ще намериш екип.
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Социални връзки:</label>
+        <div class="col-sm-9">
+          <textarea name="social_links" class="form-control" ng-model="user.social_links" rows="3" placeholder="http://github.com/my-profile
+http://facebook.com/my-profile
+http://linkedin.com/my-profile">
+
+          </textarea>
+        </div>
+      </div>
+      <hr>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Парола:</label>
+        <div class="col-sm-9">
+          <input type="password" name="password" ng-model="password" class="form-control" required>
+          <div ng-show="registerForm.password.$error.required && registerForm.password.$touched">
+            <p>Паролата е задължителна</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Пак парола:</label>
+        <div class="col-sm-9">
+          <input type="password" name="password2" class="form-control" ng-model="user.password" compare-to="password" required>
+          <div ng-show="registerForm.password2.$error.required && registerForm.password2.$touched">
+            <p>Паролата е задължителна</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-8  control-label">Интересувам се от предложения за работа или стаж:</label>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="needs_work" ng-model="user.needs_work" value="true" ng-init="user.needs_work=true">
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-8  control-label">
+          <a href="http://hackfmi.com/the-rules/" target="_blank">
+            Съгласен съм с условията на HackFMI5:
+          </a>
+        </label>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="agree" ng-model="user.agree" ng-init="user.agree=true" required>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary" ng-disabled="registerForm.$invalid">
+          Hack on!
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
