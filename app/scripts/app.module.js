@@ -9,6 +9,7 @@
       // 'ngSanitize',
       // 'ngTouch',
       'ui.router',
+      'checklist-model',
 
       'hackfmiApp.auth',
       'hackfmiApp.widgets',

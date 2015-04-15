@@ -9,28 +9,30 @@
     /*jshint validthis: true */
     var vm = this;
 
+    vm.skills = skills;
     vm.register = register;
+    vm.selectedSkills = selectedSkills;
     vm.user = {};
+    vm.user.known_skills = []
     
-    activate();
-
-    function activate() {
-      vm.skills = skills;
-    }
-
     function register(isFormValid) {
-      console.log('in register function');
-      vm.user.known_skills = [];
       vm.user.first_name = splitName(vm.user.name)[0];
       vm.user.last_name = splitName(vm.user.name)[1];
-      console.log(vm.user);
 
+      if(isFormValid) {
+        
+      }
+      
     }
 
     function splitName(name) {
-    var fullName = name.split(' ');
-    fullName = fullName.filter(Boolean);
-    return fullName;
+      var fullName = name.split(' ');
+      fullName = fullName.filter(Boolean);
+      return fullName;
+    }
+
+    function selectedSkills(skills) {
+      return skills.length > 0;
     }
   }
 })();
