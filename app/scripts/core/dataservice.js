@@ -6,10 +6,7 @@
     .factory('dataservice', dataservice);
 
   /* @ngInject */
-  function dataservice($http, $location, $q, exception, logger) {
-    console.log("daa");
-    var isPrimed = false;
-    var primePromise;
+  function dataservice($http, $location, $q) {
 
     var service = {
       getSkills: getSkills,
@@ -19,16 +16,17 @@
 
     function getSkills() {
       return $http.get('/api/maa')
-        .then(getSkillComplete)
-        .catch(function(message) {
-          // exception.catcher('XHR Failed for getAvengers')(message);
-          // $location.url('/');
-          console.log(message);
-        });
+        .then(getSkillsComplete)
+        .catch(getSkillsFailed);
 
-      function getSkillComplete(data, status, headers, config) {
-        console.log(data)
-        return data.data[0].data.results;
+      function getSkillsComplete(response) {
+        console.log(response);
+        return response;
+      }
+
+      function getSkillsFailed(error) {
+        console.log(error);
+        return error;
       }
     }
   }

@@ -3,12 +3,9 @@
 
   angular
     .module('hackfmiApp.auth')
-    .controller('Register', Register);
-
-  Register.$inject = ['$q', 'dataservice'];
+    .controller('RegisterCtrl', Register);
 
   function Register($q, dataservice) {
-    console.log("V cont")
     /*jshint validthis: true */
     var vm = this;
 
@@ -17,18 +14,16 @@
     activate();
 
     function activate() {
-      var promises = [getSkills()];
-      return $q.all(promises).then(function() {
-        console.log("Data got!")
-      });
+      console.log('in activate');
+      
+      return getSkillsC()
     }
 
-    function getSkills() {
-      return dataservice.getSkills().then(function(data) {
-        vm.skills = data;
-        return vm.skills;
-      });
+    function getSkillsC() {
+      return dataservice.getSkills()
+        .then(function(data) {
+          console.log(data);
+        })
     }
-
   }
 })();

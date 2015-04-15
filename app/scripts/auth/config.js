@@ -22,8 +22,8 @@
       .state('register', {
         url: '/register',
         templateUrl: 'views/auth-register.html',
-        controler: 'Register',
-        controllerAs: 'vm',
+        controller: 'RegisterCtrl',
+        controllerAs: 'vm'
       })
     }
 })();

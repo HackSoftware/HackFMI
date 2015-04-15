@@ -5,7 +5,8 @@
         /*
          * Angular modules
          */
-        'ui.router',
+      'ui.router',
+      'hackfmiApp.auth'
 
 
         /*
