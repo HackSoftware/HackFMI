@@ -11,6 +11,7 @@
       'ui.router',
 
       'hackfmiApp.auth',
+      'hackfmiApp.widgets',
       'hackfmiApp.core',
       'hackfmiApp.teams'
     ]);

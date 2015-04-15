@@ -25,5 +25,11 @@
         controller: 'RegisterCtrl',
         controllerAs: 'vm'
       })
+      .state('login', {
+        url: '/login',
+        templateUrl: 'views/auth-login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'vm'
+      })
     }
 })();

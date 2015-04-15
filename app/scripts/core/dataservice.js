@@ -20,12 +20,10 @@
         .catch(getSkillsFailed);
 
       function getSkillsComplete(response) {
-        console.log(response);
         return response;
       }
 
       function getSkillsFailed(error) {
-        console.log(error);
         return error;
       }
     }
