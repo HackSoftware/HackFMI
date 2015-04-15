@@ -10,7 +10,8 @@
       // 'ngTouch',
       'ui.router',
 
-      'hackfmiApp.core'
-
+      'hackfmiApp.auth',
+      'hackfmiApp.core',
+      'hackfmiApp.teams'
     ]);
 })();

@@ -3,18 +3,13 @@
 
   var core = angular.module('hackfmiApp.core');
 
+  core.constant("DATA_URL", "http://data.hackbulgaria.com/hackfmi/api/")
 
-  // var config = {
-  //   appErrorPrefix: '[NG-Modular Error] ', //Configure the exceptionHandler decorator
-  //   appTitle: 'Core app',
-  // };
-
-  // core.value('config', config);
 
   core.config(configure);
 
   /* @ngInject */
   function configure ($stateProvider, $urlRouterProvider) {
-     $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/");
   }
 })();
