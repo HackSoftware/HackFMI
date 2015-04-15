@@ -3,12 +3,12 @@
     <span class="help-block">{{error.message}}</span>
   </div>
   <div class="row marketing" >
-    <form class="form-horizontal" name="registerForm" ng-submit="submitForm(registerForm.$valid)" novalidate>
+    <form class="form-horizontal" name="registerForm" ng-submit="vm.register(registerForm.$valid)" novalidate>
 
       <div class="form-group">
         <label class="col-sm-3 control-label">Две имена:</label>
         <div class="col-sm-9">
-          <input type="text" name="full_name" class="form-control" ng-model="user.full_name" required>
+          <input type="text" name="full_name" class="form-control" ng-model="vm.user.name" required>
           <div ng-show="registerForm.full_name.$error.required && registerForm.full_name.$touched">
             <span class="help-block">Tова поле е задължително!</span>
           </div>
@@ -18,7 +18,7 @@
       <div class="form-group">
         <label class="col-sm-3 control-label">Email:</label>
         <div class="col-sm-9">
-          <input type="email" name="email" class="form-control" ng-model="user.email" required>
+          <input type="email" name="email" class="form-control" ng-model="vm.user.email" required>
           <div ng-show="registerForm.email.$error.required && registerForm.email.$touched">
             <span class="help-block">Tова поле е задължително!</span>
           </div>
@@ -31,7 +31,7 @@
       <div class="form-group">
         <label class="col-sm-3 control-label">Факултетен номер:</label>
         <div class="col-sm-9">
-          <input type="number" name="number" class="form-control" ng-model="user.faculty_number" ng-minlength="3" ng-maxlength="10">
+          <input type="number" name="number" class="form-control" ng-model="vm.user.faculty_number" ng-minlength="3" ng-maxlength="10">
           <div ng-show="registerForm.number.$touched && registerForm.number.$error.number">
             <span class="help-block">Трябва да е число</span>
           </div>
@@ -49,7 +49,7 @@
         <div class="col-sm-9">
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="is_vegetarian" ng-model="user.is_vegetarian" value="true">
+              <input type="checkbox" name="is_vegetarian" ng-model="vm.user.is_vegetarian" value="true">
             </label>
           </div>
         </div>
@@ -58,7 +58,7 @@
       <div class="form-group">
         <label class="col-sm-3 control-label">Размер на тениска:</label>
         <div class="col-sm-2">
-          <select  class="form-control" ng-model="user.shirt_size">
+          <select  class="form-control" ng-model="vm.user.shirt_size">
             <option value="1">S</option>
             <option value="2">M</option>
             <option value="3">L</option>
@@ -70,12 +70,12 @@
       <div class="form-group">
         <label class="col-sm-3  control-label">Владея:</label>
         <div class="col-sm-9">
-          <div class="checkbox"  ng-repeat="skill in skills">
+          <div class="checkbox"  ng-repeat="skill in vm.skills">
             <label>
-              <input type="checkbox" name="known_skills" checklist-model="user.known_skills" checklist-value="skill.id" ng-required="!someSelected(user.known_skills)"> {{skill.name}}
+              <input type="checkbox" name="known_skills" checklist-model="vm.user.known_skills" checklist-value="skill.id" ng-required="!vm.selectedSkills(vm.user.known_skills)"> {{skill.name}}
             </label>
           </div>
-          <span class="help-block" ng-show="(user.skills.length < 1)">
+          <span class="help-block" ng-show="(vm.user.skills.length < 1)">
             Отбележи свойте умения. Така по-лесно ще намериш екип.
           </span>
         </div>
@@ -83,7 +83,7 @@
       <div class="form-group">
         <label class="col-sm-3 control-label">Социални връзки:</label>
         <div class="col-sm-9">
-          <textarea name="social_links" class="form-control" ng-model="user.social_links" rows="3" placeholder="http://github.com/my-profile
+          <textarea name="social_links" class="form-control" ng-model="vm.user.social_links" rows="3" placeholder="http://github.com/my-profile
 http://facebook.com/my-profile
 http://linkedin.com/my-profile">
 
@@ -103,7 +103,7 @@ http://linkedin.com/my-profile">
       <div class="form-group">
         <label class="col-sm-3 control-label">Пак парола:</label>
         <div class="col-sm-9">
-          <input type="password" name="password2" class="form-control" ng-model="user.password" compare-to="password" required>
+          <input type="password" name="password2" class="form-control" ng-model="vm.user.password" compare-to="password" required>
           <div ng-show="registerForm.password2.$error.required && registerForm.password2.$touched">
             <p>Паролата е задължителна</p>
           </div>
@@ -115,7 +115,7 @@ http://linkedin.com/my-profile">
         <div class="col-sm-4">
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="needs_work" ng-model="user.needs_work" value="true" ng-init="user.needs_work=true">
+              <input type="checkbox" name="needs_work" ng-model="vm.user.needs_work" value="true" ng-init="vm.user.needs_work=true">
             </label>
           </div>
         </div>
@@ -130,7 +130,7 @@ http://linkedin.com/my-profile">
         <div class="col-sm-4">
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="agree" ng-model="user.agree" ng-init="user.agree=true" required>
+              <input type="checkbox" name="agree" ng-model="vm.user.agree" ng-init="vm.user.agree=true" required>
             </label>
           </div>
         </div>
@@ -143,3 +143,4 @@ http://linkedin.com/my-profile">
     </form>
   </div>
 </div>
+{{vm.user.known_skills}}

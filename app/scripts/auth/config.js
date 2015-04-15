@@ -23,7 +23,10 @@
         url: '/register',
         templateUrl: 'views/auth-register.html',
         controller: 'RegisterCtrl',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: {
+          skills: skillsPrepService
+        }
       })
       .state('login', {
         url: '/login',
@@ -32,4 +35,8 @@
         controllerAs: 'vm'
       })
     }
+
+  function skillsPrepService(dataservice) {
+    return dataservice.getSkills();
+  }
 })();

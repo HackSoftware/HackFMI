@@ -15,7 +15,7 @@
     return service;
 
     function getSkills() {
-      return $http.get('/api/maa')
+      return $http.get(url)
         .then(getSkillsComplete)
         .catch(getSkillsFailed);
 
