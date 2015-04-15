@@ -8,7 +8,6 @@
 
   /* @ngInject */
   function configure ($stateProvider) {
-    console.log("daa");
     $stateProvider
       .state('teamfind', {
         url: '/teamfind',

@@ -21,7 +21,6 @@
       scope.$watch(errorMessageAttr, function(newVal) {
         scope.errorMessage = newVal;
       })
-
     }
   }
 })();

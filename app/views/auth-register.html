@@ -1,7 +1,8 @@
 <div class="card card-container" id="register-form">
-  <div ng-show="error.show">
-    <span class="help-block">{{error.message}}</span>
-  </div>
+
+  <div cc-error-box error-message="vm.errorService.errorMessage">
+    </div>
+
   <div class="row marketing" >
     <form class="form-horizontal" name="registerForm" ng-submit="vm.register(registerForm.$valid)" novalidate>
 
@@ -103,9 +104,12 @@ http://linkedin.com/my-profile">
       <div class="form-group">
         <label class="col-sm-3 control-label">Пак парола:</label>
         <div class="col-sm-9">
-          <input type="password" name="password2" class="form-control" ng-model="vm.user.password" compare-to="password" required>
+          <input type="password" name="password2" class="form-control" ng-model="vm.user.password" cc-pwd-check="password" required>
           <div ng-show="registerForm.password2.$error.required && registerForm.password2.$touched">
             <p>Паролата е задължителна</p>
+          </div>
+          <div ng-show="registerForm.password2.$error.pwdmatch && registerForm.password2.$touched">
+            <p>Паролата трябва да съвпада</p>
           </div>
         </div>
       </div>
@@ -143,4 +147,3 @@ http://linkedin.com/my-profile">
     </form>
   </div>
 </div>
-{{vm.user.known_skills}}

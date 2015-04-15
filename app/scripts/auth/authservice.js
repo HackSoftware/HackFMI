@@ -10,27 +10,34 @@
 
     var service = {
       login: login,
+      register: register,
     };
 
     return service;
 
     function login(user) {
       return $http.post(DATA_URL + 'login/', user)
-        .then(loginComplete)
-        .catch(loginFailed);
+        .then(complete)
+        .catch(failed);
+    }
 
-      function loginComplete(response) {
-        return response;
-      }
+    function register(user) {
+      return $http.post(DATA_URL + 'register/', user)
+        .then(complete)
+        .catch(failed);
+    }
 
-      function loginFailed(error) {
-        var finalError = [];
-        for (var er in error.data) {
-          finalError.push(error.data[er][0]);
-        }
-        errorservice.setError(finalError.join("<br>"));
-        return error
+    function complete(response) {
+      return response;
+    }
+
+    function failed(error) {
+      var finalError = [];
+      for (var er in error.data) {
+        finalError.push(error.data[er][0]);
       }
+      errorservice.setError(finalError);
+      return error;
     }
   }
 })();
