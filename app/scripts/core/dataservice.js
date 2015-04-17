@@ -15,7 +15,7 @@
     return service;
 
     function getSkills() {
-      return $http.get(DATA_URL + 'skills/')
+      return $http.get('http://localhost:8000/hackfmi/api/skills/')
         .then(getSkillsComplete)
         .catch(getSkillsFailed);
 

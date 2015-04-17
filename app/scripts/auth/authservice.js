@@ -16,13 +16,13 @@
     return service;
 
     function login(user) {
-      return $http.post(DATA_URL + 'login/', user)
+      return $http.post('http://localhost:8000/hackfmi/api/login/', user)
         .then(complete)
         .catch(failed);
     }
 
     function register(user) {
-      return $http.post(DATA_URL + 'register/', user)
+      return $http.post('http://localhost:8000/hackfmi/api/register/', user)
         .then(complete)
         .catch(failed);
     }
