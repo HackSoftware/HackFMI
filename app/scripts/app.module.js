@@ -11,6 +11,7 @@
       'ui.router',
       'checklist-model',
 
+      'hackfmiApp.mentors',
       'hackfmiApp.auth',
       'hackfmiApp.widgets',
       'hackfmiApp.core',
