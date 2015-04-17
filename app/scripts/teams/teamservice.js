@@ -16,7 +16,7 @@
 
     function getTeams() {
       console.log(DATA_URL);
-      return $http.get('http://localhost:8000/hackfmi/api/teams/')
+      return $http.get(DATA_URL + 'teams/')
         .then(getTeamsComplete)
         .catch(getTeamsFailed);
 
