@@ -18,30 +18,28 @@
     return service;
 
     function login(user) {
-      return $http.post('http://localhost:8000/hackfmi/api/login/', user)
-        .then(complete)
-        .catch(failed);
+      return $http.post(DATA_URL + 'login/', user)
+        .success(complete)
+        .error(failed);
     }
 
     function register(user) {
-      return $http.post('http://localhost:8000/hackfmi/api/register/', user)
-        .then(complete)
-        .catch(failed);
+      return $http.post(DATA_URL + 'register/', user)
+        .success(complete)
+        .error(failed);
     }
 
     function resetPassword(email) {
-      return $http.post('http://localhost:8000/hackfmi/api/password_reset/', email)
-        .then(complete)
-        .catch(failed);
+      return $http.post(DATA_URL + 'password_reset/', email)
+        .success(complete)
+        .error(failed);
     }
 
     function setNewPassword(data) {
-      return $http.post('http://localhost:8000/hackfmi/api/password_reset_confirm/', data)
-        .then(complete)
-        .catch(failed);
+      return $http.post(DATA_URL + 'password_reset_confirm/', data)
+        .success(complete)
+        .error(failed);
     }
-
-    
 
     function complete(response) {
       return response;
@@ -49,12 +47,13 @@
 
     function failed(error) {
       var finalError = [];
-      for (var er in error.data) {
-        finalError.push(error.data[er][0]);
-      }
-      errorservice.setError(finalError);
       console.log(error);
+      for (var er in error) {
+        finalError.push(error[er][0]);      
+      }
+      console.log(finalError);
+      errorservice.setError(finalError);
       return error;
-    }
+    }    
   }
 })();

@@ -13,9 +13,15 @@
     vm.user = {}
 
     function login() {
+      console.log(vm.errorService);
       return authservice.login(vm.user)
-        .then(function(data) {
+        .then(function(response) {
+          //set token and redirect
+          localStorage.setItem('token', response.data.auth_token);
+          $state.go('teamfind');
+          console.log(localStorage);
         })
+      
     }
   }
 })();
