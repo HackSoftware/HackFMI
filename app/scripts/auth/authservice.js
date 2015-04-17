@@ -11,6 +11,8 @@
     var service = {
       login: login,
       register: register,
+      resetPassword: resetPassword,
+      setNewPassword: setNewPassword,
     };
 
     return service;
@@ -27,6 +29,20 @@
         .catch(failed);
     }
 
+    function resetPassword(email) {
+      return $http.post('http://localhost:8000/hackfmi/api/password_reset/', email)
+        .then(complete)
+        .catch(failed);
+    }
+
+    function setNewPassword(data) {
+      return $http.post('http://localhost:8000/hackfmi/api/password_reset_confirm/', data)
+        .then(complete)
+        .catch(failed);
+    }
+
+    
+
     function complete(response) {
       return response;
     }
@@ -37,6 +53,7 @@
         finalError.push(error.data[er][0]);
       }
       errorservice.setError(finalError);
+      console.log(error);
       return error;
     }
   }

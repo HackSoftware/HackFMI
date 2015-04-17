@@ -12,7 +12,10 @@
       errorMessage: null,
       setError: function setError(msg) {
         this.errorMessage = msg
-      }
+      },
+      clear: function() {
+        this.errorMessage = null;
+      }      
     };
 
     return service;

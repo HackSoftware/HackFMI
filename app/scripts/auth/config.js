@@ -1,10 +1,9 @@
 (function() {
   'use strict';
 
-  var core = angular.module('hackfmiApp.auth');
-
-
-  core.config(configure);
+  angular
+    .module('hackfmiApp.auth')
+    .config(configure);
 
   /* @ngInject */
   function configure ($stateProvider) {
@@ -33,6 +32,24 @@
         templateUrl: 'views/auth-login.html',
         controller: 'LoginCtrl',
         controllerAs: 'vm'
+      })
+      .state('resetpassword', {
+        url: '/resetpassword',
+        templateUrl: 'views/auth-resetpassword.html',
+        controller: 'resetPasswordCtrl',
+        controllerAs: 'vm'
+      })
+      .state('resetpassword-success', {
+        templateUrl: 'views/auth-resetpassword-success.html'
+      })
+      .state('setnewpassword', {
+        url: '/reset-confirm/:uid/:token',
+        templateUrl: 'views/auth-setnewpassword.html',
+        controller: 'setNewPasswordCtrl',
+        controllerAs: 'vm',
+      })
+      .state('setnewpassword-success', {
+        templateUrl: 'views/auth-setnewpassword-success.html'
       })
     }
 

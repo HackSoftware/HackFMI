@@ -6,14 +6,17 @@
     <div cc-error-box error-message="vm.errorService.errorMessage">
     </div>
 
-    <form class="form-signin"  ng-submit="vm.login()">
+    <form class="form-signin"  ng-submit="vm.login()" novalidate>
       <span id="reauth-email"></span>
       <input type="email" id="inputEmail" class="form-control" placeholder="Email address" ng-model="vm.user.email" required autofocus>
       <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="vm.user.password"required>
       <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Вход</button>
     </form>
-    <a href="#/register" class="forgot-password">
+    <a ui-sref="register" class="forgot-password">
       Още не си се регистрирал?
+    </a><br>
+    <a ui-sref="resetpassword" class="forgot-password">
+      Забравена парола?
     </a>
   </div>
 </div>
