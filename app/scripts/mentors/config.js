@@ -10,7 +10,7 @@
   function configure ($stateProvider) {
     $stateProvider
       .state('showmentors', {
-        url: '/showmentors',
+        url: '/mentors',
         templateUrl: 'views/mentors-showmentors.html',
         controller: 'ShowMentorsCtrl',
         controllerAs: 'vm',
