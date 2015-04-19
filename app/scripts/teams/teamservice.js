@@ -15,7 +15,6 @@
     return service;
 
     function getTeams() {
-      console.log(DATA_URL);
       return $http.get(DATA_URL + 'teams/')
         .then(getTeamsComplete)
         .catch(getTeamsFailed);
