@@ -5,7 +5,7 @@
     .module('hackfmiApp.auth')
     .controller('RegisterCtrl', Register);
 
-  function Register(skills, authservice, errorservice) {
+  function Register(skills, authservice, errorservice, $state, $rootScope) {
     /*jshint validthis: true */
     var vm = this;
 
@@ -16,6 +16,8 @@
     vm.user.known_skills = []
     vm.errorService = errorservice;
 
+    console.log($rootScope);
+    
     function register(isFormValid) {
       vm.user.first_name = splitName(vm.user.name)[0];
       vm.user.last_name = splitName(vm.user.name)[1];

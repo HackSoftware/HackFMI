@@ -6,7 +6,7 @@
     .factory('dataservice', dataservice);
 
   /* @ngInject */
-  function dataservice($http, $location, $q, DATA_URL) {
+  function dataservice($http, $location, DATA_URL) {
 
     var service = {
       getSkills: getSkills,

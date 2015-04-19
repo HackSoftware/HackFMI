@@ -6,7 +6,7 @@
     .factory('authservice', authservice);
 
   /* @ngInject */
-  function authservice($http, errorservice, $location, $q, DATA_URL) {
+  function authservice($http, errorservice, $location, DATA_URL) {
 
     var service = {
       login: login,
