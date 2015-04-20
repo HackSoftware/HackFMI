@@ -5,7 +5,7 @@
     .module('hackfmiApp.auth')
     .controller('LoginCtrl', Login);
 
-  function Login(errorservice, $state, authservice) {
+  function Login($state, authservice, errorservice) {
     /*jshint validthis: true */
     var vm = this;
     vm.errorService = errorservice;

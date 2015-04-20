@@ -4,19 +4,16 @@
   angular
     .module('hackfmiApp.auth')
     .config(configure);
+  //console.log(angular.module('hackfmiApp.auth'));
 
+  configure.$inject = ['$stateProvider'];
+ 
   /* @ngInject */
-  function configure ($stateProvider) {
+  function configure($stateProvider) {
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: 'views/auth-main.html',
-        // data: {
-        //   permissions: {
-        //     only: ['anonymous'],
-        //     redirectTo: 'teamfind.notification'
-        //   }
-        // }
+        templateUrl: 'views/auth-main.html'
       })
       .state('register', {
         url: '/register',
@@ -46,14 +43,14 @@
         url: '/reset-confirm/:uid/:token',
         templateUrl: 'views/auth-setnewpassword.html',
         controller: 'setNewPasswordCtrl',
-        controllerAs: 'vm',
+        controllerAs: 'vm'
       })
       .state('setnewpassword-success', {
         templateUrl: 'views/auth-setnewpassword-success.html'
       })
-    }
-
+  }
   function skillsPrepService(dataservice) {
     return dataservice.getSkills();
   }
+  
 })();
