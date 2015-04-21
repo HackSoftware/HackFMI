@@ -10,14 +10,18 @@
 
     var service = {
       errorMessage: null,
-      setError: function setError(msg) {
-        this.errorMessage = msg
-      },
-      clear: function() {
-        this.errorMessage = null;
-      }      
+      setError: setError,
+      clear: clear
     };
 
     return service;
+
+    function setError(msg) {
+      return this.errorMessage = msg;
+    };
+    function clear() {
+      console.log('clear fn');
+      this.errorMessage = null;
+    };
   }
 })();

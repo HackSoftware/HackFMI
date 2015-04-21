@@ -9,13 +9,13 @@
   function dataservice($http, $location, DATA_URL) {
 
     var service = {
-      getSkills: getSkills,
+      getSkills: getSkills
     };
 
     return service;
 
     function getSkills() {
-      return $http.get('http://localhost:8000/hackfmi/api/skills/')
+      return $http.get(DATA_URL + 'skills/')
         .then(getSkillsComplete)
         .catch(getSkillsFailed);
 
