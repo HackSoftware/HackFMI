@@ -5,7 +5,7 @@
     .module('hackfmiApp.auth')
     .controller('RegisterCtrl', Register);
 
-  function Register(skills, authservice, errorservice, $state, $rootScope) {
+  function Register(skills, authservice, errorservice, $state) {
     /*jshint validthis: true */
     var vm = this;
 
@@ -13,27 +13,23 @@
     vm.register = register;
     vm.selectedSkills = selectedSkills;
     vm.user = {};
-    vm.user.known_skills = []
+    vm.user.known_skills = [];
     vm.errorService = errorservice;
-
-    console.log($rootScope);
     
     function register(isFormValid) {
-      vm.user.first_name = splitName(vm.user.name)[0];
-      vm.user.last_name = splitName(vm.user.name)[1];
+      var fullName = authservice.splitName(vm.user.name);
+      vm.user.first_name = fullName[0];
+      vm.user.last_name = fullName[1];
 
       if(isFormValid) {
-        authservice.register(vm.user)
-          .then(function(data) {
-            console.log(data);
+         authservice.register(vm.user)
+          .success(function(data) {
+            $state.go('activate-msg');
+          })
+          .error(function(error) {
+            console.log(error);
           });
       }
-    }
-
-    function splitName(name) {
-      var fullName = name.split(' ');
-      fullName = fullName.filter(Boolean);
-      return fullName;
     }
 
     function selectedSkills(skills) {

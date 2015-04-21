@@ -11,8 +11,10 @@
     var service = {
       login: login,
       register: register,
+      activate: activate,
       resetPassword: resetPassword,
       setNewPassword: setNewPassword,
+      splitName: splitName
     };
 
     return service;
@@ -29,6 +31,10 @@
         .error(failed);
     }
 
+    function activate(data) {
+      return $http.post(DATA_URL + 'activate/', data);
+    }
+
     function resetPassword(email) {
       return $http.post(DATA_URL + 'password_reset/', email)
         .success(complete)
@@ -41,19 +47,28 @@
         .error(failed);
     }
 
+    function splitName(name) {
+      var fullName = name.split(' ');
+      fullName = fullName.filter(Boolean);
+      return fullName;
+    }
+
     function complete(response) {
       return response;
     }
 
-    function failed(error) {
-      var finalError = [];
-      console.log(error);
-      for (var er in error) {
-        finalError.push(error[er][0]);      
+    function failed(error, status) {
+      console.log(status);
+      
+      if(status !== 500) {
+        var finalError = [];
+        for (var er in error) {
+          finalError.push(error[er][0]);      
+        }
+        errorservice.setError(finalError);
+        return error;
       }
-      console.log(finalError);
-      errorservice.setError(finalError);
-      return error;
-    }    
+      return status;
+    };  
   }
 })();
