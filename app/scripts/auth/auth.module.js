@@ -3,6 +3,7 @@
 
   angular
     .module('hackfmiApp.auth', [
-      'ui.router'
+      'ui.router',
+       'checklist-model'
     ]);
 })();

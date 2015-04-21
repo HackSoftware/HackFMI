@@ -5,13 +5,22 @@
     .module('hackfmiApp.teams')
     .controller('TeamAddCtrl', TeamAdd);
   
-  function TeamAdd(skills) {
+  function TeamAdd(technologies, errorservice) {
     var vm = this;
-    vm.skills = skills; 
-    activate();
-    
-    function activate() {
-      
-    };
-  };
+    vm.technologies = technologies;
+    console.log(vm.technologies);
+    vm.addTeam = addTeam;
+    vm.selectedTechnologies = selectedTechnologies;
+    vm.team = {};
+    vm.team.technologies = [];
+    vm.error = errorservice;
+
+    function addTeam() {
+      console.log(vm.team);
+    }
+
+    function selectedTechnologies(technologies) {
+      return technologies.length > 0;
+    }
+  }
 })();

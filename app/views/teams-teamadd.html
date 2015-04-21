@@ -1,0 +1,49 @@
+<div class="card card-container" id="register-form">
+
+  <div ng-show="error.show">
+    <span class="help-block">{{error.message}}</span>
+  </div>
+
+  <div class="row marketing">
+    <form class="form-horizontal" name="addTeamForm" ng-submit="vm.addTeam(addTeamForm.$valid)" novalidate>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Име на отбора:</label>
+        <div class="col-sm-9">
+          <input type="text" name="name" class="form-control" ng-model="vm.team.name" required>
+          <div ng-show="addTeamForm.name.$error.required && addTeamForm.name.$touched">
+            <span class="help-block">Tова поле е задължително!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Oписание на идеята:</label>
+        <div class="col-sm-9">
+          <textarea name="idea_description" class="form-control" ng-model="vm.team.idea_description" rows="5" required></textarea>
+          <div ng-show="addTeamForm.idea_description.$error.required && addTeamForm.idea_description.$touched">
+            <span class="help-block">Tова поле е задължително!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3  control-label">Технологии, които ще използвате:</label>
+        <div class="col-sm-9">
+          <div class="checkbox"  ng-repeat="tech in vm.technologies">
+            <label>
+              <input type="checkbox" name="technologies" checklist-model="vm.team.technologies" checklist-value="tech.id" ng-required="!vm.selectedTechnologies(vm.team.technologies)"> {{tech.name}}
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary" ng-disabled="addTeamForm.$invalid">
+          Създай отбор!
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

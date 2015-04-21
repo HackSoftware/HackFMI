@@ -1,12 +1,10 @@
 (function() {
   'use strict';
 
-  var teams = angular.module('hackfmiApp.teams');
+  angular
+    .module('hackfmiApp.teams')
+    .config(configure);
 
-
-  teams.config(configure);
-
-  /* @ngInject */
   function configure ($stateProvider) {
     $stateProvider
       .state('teamfind', {
@@ -24,14 +22,15 @@
         controller: 'TeamAddCtrl',
         controllerAs: 'vm',
         resolve: {
-          skills: skillsPrepService
+          technologies: techPrepService
         }
       });
-  }
-  function teamsPrepService(teamservice) {
-    return teamservice.getTeams();
-  }
-  function skillsPrepService(dataservice) {
-    return dataservice.getSkills();
+    
+    function teamsPrepService(teamservice) {
+      return teamservice.getTeams();
+    }
+    function techPrepService(dataservice) {
+      return dataservice.getSkills();
+    }
   }
 })();
