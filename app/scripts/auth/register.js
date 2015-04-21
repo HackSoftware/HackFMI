@@ -5,10 +5,8 @@
     .module('hackfmiApp.auth')
     .controller('RegisterCtrl', Register);
 
-<<<<<<< HEAD
   Register.$inject = ['skills', 'authservice', 'errorservice', '$state'];
-=======
->>>>>>> f812607a6fd99c078dbe04a80a7a069dbcd0c1ed
+
   function Register(skills, authservice, errorservice, $state) {
     /*jshint validthis: true */
     var vm = this;
