@@ -17,7 +17,7 @@
     return service;
 
     function getTeams() {
-       var options = { headers: { 'Authorization': 'Token ' + '25d1eb1bb5b7cfdae16a273cb1cba54e0c81e1aa' }};
+       var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
       return $http.get(DATA_URL + 'teams/', options)
         .success(complete)
         .error(failed);
