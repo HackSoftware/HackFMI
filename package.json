@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "mocha": "~2.2.4",
-    "chai": "~2.2.0",
-    "ng-midway-tester": "~2.0.5"
+    "chai": "~2.2.0"
   },
   "repository": {},
   "devDependencies": {

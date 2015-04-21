@@ -5,7 +5,8 @@
     .module('hackfmiApp.auth')
     .controller('RegisterCtrl', Register);
 
-  function Register(skills, authservice, errorservice, $state, $rootScope) {
+  Register.$inject = ['skills', 'authservice', 'errorservice', '$state'];
+  function Register(skills, authservice, errorservice, $state) {
     /*jshint validthis: true */
     var vm = this;
 
@@ -13,11 +14,9 @@
     vm.register = register;
     vm.selectedSkills = selectedSkills;
     vm.user = {};
-    vm.user.known_skills = []
+    vm.user.known_skills = [];
     vm.errorService = errorservice;
 
-    console.log($rootScope);
-    
     function register(isFormValid) {
       vm.user.first_name = splitName(vm.user.name)[0];
       vm.user.last_name = splitName(vm.user.name)[1];
@@ -25,7 +24,7 @@
       if(isFormValid) {
         authservice.register(vm.user)
           .then(function(data) {
-            console.log(data);
+            $state.go('teamfind');
           });
       }
     }

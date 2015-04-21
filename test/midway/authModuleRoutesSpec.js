@@ -1,45 +1,69 @@
 describe("Midway: Testing Routes", function() {
 
-  var $rootScope;
-  var $scope;
-  var $state;
+  var rootScope;
+  var scope;
+  var state;
   var injector;
-    
+  var ctrl;
+  var skillsMock;
+  var controller;
+  var authservice, errorservice;
+  
   beforeEach(module('hackfmiApp.auth'));
+  beforeEach(module('ui.router'));
+  beforeEach(module(function ($provide) {
+      skillsMock = $provide.value('skills', [{id:1, name:'skill1'}, {id:2, name: 'skill2'}]);
+  }));
 
   beforeEach(inject(function ($injector) {
     injector = $injector;
-    $state = $injector.get('$state');
-    $rootScope = $injector.get('$rootScope');
-    vm = $rootScope.$new();
+    state = injector.get('$state');
+    rootScope = injector.get('$rootScope');
+    scope = rootScope.$new();
   }));
+
+  
+  
   
   describe("Auth module routes:", function() {
     var cfg;
 
     it('Home state should have the right configuration', function() {
-      var state = 'home';
-      cfg = $state.get(state);
+      cfg = state.get('home');
       expect(cfg.name).to.equal('home');
       expect(cfg.url).to.equal('/');
       expect(cfg.templateUrl).to.equal('views/auth-main.html');
       expect(cfg.controller).to.equal(undefined);
-      expect($state.href(state)).to.equal('#/');
+      expect(state.href('home')).to.equal('#/');
     });
 
-    it("Register state should have the right config", function() {
-      var state = 'register';
-      cfg = $state.get(state);
-      expect(cfg.name).to.equal('register');
-      expect(cfg.url).to.equal('/register');
-      expect(cfg.templateUrl).to.equal('views/auth-register.html');
-      expect(cfg.controller).to.equal('RegisterCtrl');
-      expect(cfg.controllerAs).to.equal('vm');
-      expect($state.href(state)).to.equal('#/register');
-    });
+    describe("Register state", function() {
+      beforeEach(inject(function ($injector) {
+        controller = $injector.get('$controller');
+        //new register controller
+        ctrl = controller('RegisterCtrl', {
+          $scope: scope,
+          skills: skillsMock.$get(),
+          authservice: authservice,
+          errorservice: errorservice,
+          $state: state
+        });
 
-    it("Register state should resolve data corectly", function() {
-      //TODO
+      }));
+
+      it("should have the right config", function() {
+        cfg = state.get('register');
+        expect(cfg.name).to.equal('register');
+        expect(cfg.url).to.equal('/register');
+        expect(cfg.templateUrl).to.equal('views/auth-register.html');
+        expect(cfg.controller).to.equal('RegisterCtrl');
+        expect(cfg.controllerAs).to.equal('vm');
+        expect(state.href('register')).to.equal('#/register');
+      });
+
+      it("should load RegisterCtrl when properly when /register route is accessed", function() {
+        //todo
+      });
     });
   });
 });
