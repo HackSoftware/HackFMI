@@ -5,22 +5,14 @@
     .module('hackfmiApp.teams')
     .controller('TeamFindCtrl', TeamFind);
 
-  function TeamFind($q, teamservice) {
+  function TeamFind(teams) {
     /*jshint validthis: true */
     var vm = this;
-
-
+    vm.teams = teams.data;
+    
     activate();
 
     function activate() {
-      return getTeams()
-    }
-
-    function getTeams() {
-      return teamservice.getTeams()
-        .then(function(data) {
-          console.log(data);
-        })
     }
   }
 })();

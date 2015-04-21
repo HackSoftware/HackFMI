@@ -15,7 +15,6 @@
     return service;
 
     function getSkills() {
-      console.log(DATA_URL);
       return $http.get(DATA_URL + 'skills/')
         .then(getSkillsComplete)
         .catch(getSkillsFailed);

@@ -12,11 +12,17 @@
     vm.setNew = setNew;
 
     function setNew() {
+      
       return authservice.setNewPassword(vm.data)
-        .then(function() {
-          vm.error.clear();
-          $state.go('setnewpassword-success')
+        .success(function() {
+          errorservice.clear();
+          $state.go('setnewpassword-success');
         })
+        .error(function() {
+          errorservice.clear();
+          //handle error
+        })
+      ;
     }
   }
 })();

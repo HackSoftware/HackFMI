@@ -30,6 +30,15 @@
         controller: 'LoginCtrl',
         controllerAs: 'vm'
       })
+      .state('activate-msg', {
+        templateUrl: 'views/auth-activate.html'
+      })
+      .state('activate', {
+        url: '/activate/:uid/:token',
+        controller: 'ActivateCtrl',
+        controllerAs: 'vm',
+        templateUrl: 'views/auth-activate-success.html'
+      })
       .state('resetpassword', {
         url: '/resetpassword',
         templateUrl: 'views/auth-resetpassword.html',

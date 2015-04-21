@@ -12,9 +12,13 @@
     
     function lostPassword() {
       return authservice.resetPassword(vm.userData)
-        .then(function(data) {
+        .success(function(data) {
+          console.log(data);
           $state.go('resetpassword-success');
         })
+        .error(function(error) {
+          console.log(error);
+        });
     }
   }
 })();
