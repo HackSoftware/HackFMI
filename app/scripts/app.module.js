@@ -16,20 +16,20 @@
       'hackfmiApp.core',
       'hackfmiApp.teams'
     ])
-    .config(configure)
-    .run(function($rootScope, $templateCache) {
-      $rootScope.$on('$viewContentLoaded', function() {
-        $templateCache.removeAll();
-      });
-    });
+  //   .config(configure)
+  //   .run(function($rootScope, $templateCache) {
+  //     $rootScope.$on('$viewContentLoaded', function() {
+  //       $templateCache.removeAll();
+  //     });
+  //   });
 
-  function configure($stateProvider) {
-    $stateProvider
-      .state('transition', {
-        url: 'transition?destination',
-        controller: function ($state, $stateParams) {
-          $state.go($stateParams.destination);
-        }
-      });
-  }
+  // function configure($stateProvider) {
+  //   $stateProvider
+  //     .state('transition', {
+  //       url: 'transition?destination',
+  //       controller: function ($state, $stateParams) {
+  //         $state.go($stateParams.destination);
+  //       }
+  //     });
+  // }
 })();
