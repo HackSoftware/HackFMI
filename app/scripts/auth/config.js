@@ -57,6 +57,10 @@
       .state('setnewpassword-success', {
         templateUrl: 'views/auth-setnewpassword-success.html'
       })
+      .state('logout', {
+        url: '/logout',
+        controller: 'LogoutCtrl'
+      })
   }
   function skillsPrepService(dataservice) {
     return dataservice.getSkills();
