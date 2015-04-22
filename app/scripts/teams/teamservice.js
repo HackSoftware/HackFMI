@@ -13,7 +13,7 @@
       registerTeam: registerTeam,
       transformData: transformData,
       getMyTeam: getMyTeam,
-      //editTeam: editTeam
+      editTeam: editTeam
     };
 
     return service;
@@ -55,6 +55,13 @@
     function getMyTeam(teamId) {
       var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
       return $http.get(DATA_URL + 'teams/' + teamId + '/', options);
+    }
+
+    function editTeam(teamId, data) {
+      var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
+      return $http.patch(DATA_URL + teamId + '/', data, options)
+        .success(complete)
+        .error(failed);
     }
     
     function complete(response) {

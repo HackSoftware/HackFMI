@@ -5,7 +5,7 @@
     .module('hackfmiApp.teams')
     .controller('TeamEditCtrl', TeamEditCtrl);
   
-  function TeamEditCtrl($state, technologies, myteam) {
+  function TeamEditCtrl($state, technologies, myteam, teamservice) {
     var vm = this;
 
     vm.myteam = myteam;
@@ -23,6 +23,8 @@
         members_needed_desc: vm.myteam.members_needed_desc
       };
       console.log(teamData);
+      teamservice.edit(vm.myteam.id, teamData);
+      //$state.go('myteam');
     }
   };
 })();
