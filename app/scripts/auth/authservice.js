@@ -14,7 +14,9 @@
       activate: activate,
       resetPassword: resetPassword,
       setNewPassword: setNewPassword,
-      splitName: splitName
+      splitName: splitName,
+      info: info,
+      getTeamId: getTeamId
     };
 
     return service;
@@ -44,6 +46,24 @@
     function setNewPassword(data) {
       return $http.post(DATA_URL + 'password_reset_confirm/', data)
         .success(complete)
+        .error(failed);
+    }
+
+    function info() {
+      var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
+      return $http.get(DATA_URL + 'me/', options)
+        .success(complete)
+        .error(failed);
+    }
+
+    function getTeamId() {
+      var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
+      return $http.get(DATA_URL + 'me/', options)
+        .success(function(data) {
+          var id = data.teammembership_set[0].team;
+          data.id = id;
+          return id;
+        })
         .error(failed);
     }
 

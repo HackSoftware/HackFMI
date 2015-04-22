@@ -24,8 +24,30 @@
         resolve: {
           technologies: techPrepService
         }
+      })
+      .state('teamedit', {
+        url: '/teamedit',
+        templateUrl: 'views/teams-teamedit.html',
+        controller: 'TeamEditCtrl',
+        controllerAs: 'vm',
+         resolve: {
+           technologies: techPrepService,
+           myteam: myTeamId
+         }
       });
-    
+
+    function myTeamId(authservice, teamservice) {
+      var tid = authservice.info()
+          .success(function(data) {
+            return data.teammembership_set[0].team;
+          });
+      return teamservice.getMyTeam(tid)
+        .then(function(response) {
+          console.log(response.data[0]);
+          return response.data[0];
+        });
+    };
+
     function teamsPrepService(teamservice) {
       return teamservice.getTeams();
     }

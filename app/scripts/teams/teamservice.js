@@ -11,7 +11,9 @@
     var service = {
       getTeams: getTeams,
       registerTeam: registerTeam,
-      transformData: transformData
+      transformData: transformData,
+      getMyTeam: getMyTeam,
+      //editTeam: editTeam
     };
 
     return service;
@@ -49,6 +51,11 @@
       }).join(', ');
       return names;
     };
+
+    function getMyTeam(teamId) {
+      var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
+      return $http.get(DATA_URL + 'teams/' + teamId + '/', options);
+    }
     
     function complete(response) {
       return transformData(response);
