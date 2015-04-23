@@ -14,7 +14,8 @@
       'hackfmiApp.auth',
       'hackfmiApp.widgets',
       'hackfmiApp.core',
-      'hackfmiApp.teams'
+      'hackfmiApp.teams',
+      'hackfmiApp.invitations'
     ]);
   //   .config(configure)
   //   .run(function($rootScope, $templateCache) {

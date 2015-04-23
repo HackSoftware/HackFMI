@@ -16,7 +16,7 @@
         .then(function(response) {
           console.log(errorservice);
           localStorage.setItem('token', response.data.auth_token);
-          $state.go('teamfind');
+          $state.go('teamfind.notification');
           console.log(localStorage);
         });
     }

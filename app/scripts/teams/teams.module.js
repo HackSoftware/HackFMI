@@ -3,6 +3,7 @@
 
   angular.module('hackfmiApp.teams', [
     'ui.router',
-    'hackfmiApp.auth'
+    'hackfmiApp.auth',
+    'hackfmiApp.invitations'
   ]);
 })();
