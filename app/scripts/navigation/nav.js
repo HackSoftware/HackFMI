@@ -57,11 +57,47 @@
     };
 
     function notinteam() {
-      
+      var menu = [
+        {
+          title: "Ментори",
+          action: 'showmentors'
+        },
+        {
+          title: "Създай отбор",
+          action: 'teamadd'
+        },
+        {
+          title: "Търсене на отбор",
+          action: 'teamfind.notification'
+        },
+        {
+          title: "Изход",
+          action: 'logout'
+        }
+      ];
+      return menu;
     };
 
     function inteam() {
-      
+            var menu = [
+        {
+          title: "Ментори",
+          action: 'showmentors'
+        },
+        {
+          title: "Моят отбор",
+          action: 'myteam'
+        },
+        {
+          title: "Търсене на отбор",
+          action: 'teamfind.notification'
+        },
+        {
+          title: "Изход",
+          action: 'logout'
+        }
+      ];
+      return menu;
     };   
   }
 })();
