@@ -20,11 +20,11 @@
 
       scope.$watch(errorMessageAttr, function(newVal) {
         scope.errorMessage = newVal;
-      })
+      });
 
       scope.clear = function() {
         scope.errorMessage = null;
-      }
+      };
     }
   }
 })();

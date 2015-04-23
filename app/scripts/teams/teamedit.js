@@ -10,7 +10,6 @@
 
     vm.myteam = myteam;
     vm.technologies = technologies;
-    //console.log(vm.myteam);
 
     vm.submitForm = submitForm;
 
@@ -22,9 +21,8 @@
         technologies: vm.myteam.technologies,
         members_needed_desc: vm.myteam.members_needed_desc
       };
-      console.log(teamData);
-      teamservice.edit(vm.myteam.id, teamData);
-      //$state.go('myteam');
+      teamservice.editTeam(vm.myteam.id, teamData);
+      $state.go('myteam');
     }
   };
 })();

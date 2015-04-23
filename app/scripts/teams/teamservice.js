@@ -59,10 +59,8 @@
 
     function editTeam(teamId, data) {
       var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
-      return $http.patch(DATA_URL + teamId + '/', data, options)
-        .success(complete)
-        .error(failed);
-    }
+      return $http.patch(DATA_URL + 'teams/' + teamId + '/', data, options);
+    };
     
     function complete(response) {
       return transformData(response);

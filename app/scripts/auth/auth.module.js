@@ -4,6 +4,7 @@
   angular
     .module('hackfmiApp.auth', [
       'ui.router',
-       'checklist-model'
+      'checklist-model',
+      'hackfmiApp.nav'
     ]);
 })();
