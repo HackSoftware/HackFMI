@@ -33,7 +33,7 @@
           }
         }
       });
-    }
+  }
 
   function mentorsPrepService(mentorservice) {
     return mentorservice.getMentors()

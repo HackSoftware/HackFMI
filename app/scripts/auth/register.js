@@ -7,30 +7,18 @@
 
   //Register.$inject = ['skills', 'status','authservice', 'errorservice', '$state'];
 
-  function Register(skills, status, authservice, errorservice, navbar, $state) {
+  function Register(skills, authservice, errorservice, navbar, $state) {
     /*jshint validthis: true */
     var vm = this;
-    vm.logged = authservice.token();
-    vm.smenu = [];
-    if(vm.logged == true) {
-      vm.smenu = navbar.anonymous();
-    };
+ 
+    vm.smenu = navbar.anonymous();
 
-
-    vm.navf = function(action) {
-      $state.go(action);
-    };
-    
-    vm.status = status;
     vm.skills = skills;
     vm.register = register;
     vm.selectedSkills = selectedSkills;
     vm.user = {};
     vm.user.known_skills = [];
     vm.errorService = errorservice;
-    console.log($state.get());
-    // vm.isLeader = authservice.isLeader();
-    // console.log(vm.isLeader);
     
     function register(isFormValid) {
       var fullName = authservice.splitName(vm.user.name);
@@ -41,9 +29,6 @@
          authservice.register(vm.user)
           .success(function(data) {
             $state.go('activate-msg');
-          })
-          .error(function(error) {
-            console.log(error);
           });
       }
     }

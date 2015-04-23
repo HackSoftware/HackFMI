@@ -28,7 +28,7 @@ angular.module('hackfmiApp.nav')
         
  	$scope.hasMenus = function(){
  	  return (angular.isDefined($attrs.menus));
- 	};    
-      }
+ 	};
+      }          
     };
   }]);

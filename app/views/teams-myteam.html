@@ -1,7 +1,8 @@
+<angled-navbar menus="vm.menu"></angled-navbar>
 <div class="card card-container" id="register-form">
   <button class="btn btn-danger" ng-click="vm.leave()" style="float:right;" data-toggle="confirmation">Напусни отбора!</button>
 
-  <a sref="teamedit">
+  <a ui-sref="teamedit" ng-show="vm.me.teammembership_set[0].is_leader">
     <button class="btn btn-success">Промени отбора</button>
   </a>
 
@@ -11,9 +12,9 @@
   <p>
       {{vm.team.idea_description}}
   </p>
-  <strong>Създател:</strong> {{vm.team.leader.first_name }} - {{vm.team.leader.email}}
+  <strong>Създател:</strong> {{vm.leader.first_name }} - {{vm.leader.email}}
   <p>
-    <strong>Технологии:</strong> {{vm.team.techNames}}
+    <strong>Технологии:</strong> {{vm.techNames}}
   </p>
   <p></p>
   <table class="table table-bordered table-hover" ng-show="vm.team.members.length != 1">

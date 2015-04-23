@@ -29,7 +29,8 @@
       });
 
       Permission.defineRole('leader', function (stateParams) {
-        return authservice.info()
+        if(localStorage.length > 0) {
+          return authservice.info()
           .then(function (response) {
             if (response.data.teammembership_set.length == 0) {
               return false;
@@ -39,27 +40,35 @@
               return true;
             }
             return false;
-        });
+          });
+        }
+        return false;
       });
 
       Permission.defineRole('notinteam', function (stateParams) {
-        return authservice.info()
-          .then(function (data) {
-            if (data.data.teammembership_set.length == 0) {
-              return true;
-            }
-            return false;
-          });
+        if(localStorage.length > 0) {
+          return authservice.info()
+            .then(function (data) {
+              if (data.data.teammembership_set.length == 0) {
+                return true;
+              }
+              return false;
+            });
+        }
+        return false;
       });
 
       Permission.defineRole('inteam', function (stateParams) {
-        return authservice.info()
-          .then(function (data) {
-            if (data.data.teammembership_set) {
-              return true;
-            }
-            return false;
-          });
+        if(localStorage.length > 0) {
+          return authservice.info()
+            .then(function (data) {
+              if (data.data.teammembership_set) {
+                return true;
+              }
+              return false;
+            });
+        }
+        return false;
       });
 
     });

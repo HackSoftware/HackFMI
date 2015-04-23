@@ -5,11 +5,12 @@
     .module('hackfmiApp.teams')
     .controller('TeamEditCtrl', TeamEditCtrl);
   
-  function TeamEditCtrl($state, technologies, myteam, teamservice) {
+  function TeamEditCtrl($state, technologies, myteam, teamservice, navbar) {
     var vm = this;
 
     vm.myteam = myteam;
     vm.technologies = technologies;
+    vm.menu = navbar.leader();
 
     vm.submitForm = submitForm;
 

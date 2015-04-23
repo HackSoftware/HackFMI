@@ -15,9 +15,6 @@
         .success(function(data) {
           console.log(data);
           $state.go('resetpassword-success');
-        })
-        .error(function(error) {
-          console.log(error);
         });
     }
   }

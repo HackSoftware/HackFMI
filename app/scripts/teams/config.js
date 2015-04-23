@@ -8,7 +8,12 @@
   function configure ($stateProvider) {
     $stateProvider
       .state('teamfind', {
-        templateUrl: 'views/teams-teams.html'
+        templateUrl: 'views/teams-teams.html',
+        resolve: {
+          me: meInfo
+        },
+        controller: 'TeamNavCtrl',
+        controllerAs: 'vm'
       })
       .state('teamfind.notification', {
         url: '/teamfind',
@@ -48,7 +53,7 @@
         controllerAs: 'vm',
          resolve: {
            technologies: techPrepService,
-           myteam: myTeamId
+           myteam: myTeam
          }
       })
       .state('myteam', {
@@ -57,18 +62,26 @@
         controller: 'TeamCtrl',
         controllerAs: 'vm',
         resolve: {
-          team: myTeamId
+          team: myTeam,
+          me: meInfo
         }
       });
 
-    function myTeamId(authservice, teamservice) {
+    function meInfo(authservice) {
+      return authservice.info()
+        .then(function(response) {
+          return response.data;
+        });
+    }
+    
+    function myTeam(authservice, teamservice) {
       var tid = authservice.info()
           .then(function(response) {
-            return response.data.teammembership_set[0].team;
+            return response.data.team_set[0];
           });
       return teamservice.getMyTeam(tid)
         .then(function(response) {
-          console.log(response.data[0]);
+          console.log(response.data);
           return response.data[0];
         });
     };

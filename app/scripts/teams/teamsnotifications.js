@@ -20,7 +20,7 @@
     nm.decline = function(invitationId) {
       invitations.decline(invitationId)
         .then(function(response) {
-          $('#' + invitationId).remove()
+          $('#' + invitationId).remove();
         });
     };
   };

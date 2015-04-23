@@ -5,11 +5,12 @@
     .module('hackfmiApp.auth')
     .controller('LoginCtrl', Login);
 
-  function Login($state, authservice, errorservice) {
+  function Login($state, authservice, errorservice, navbar) {
     var vm = this;
     vm.errorService = errorservice;
     vm.login = login;
     vm.user = {};
+    vm.smenu = navbar.anonymous();
 
     function login() {
       return authservice.login(vm.user)

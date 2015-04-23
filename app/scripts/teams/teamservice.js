@@ -14,7 +14,9 @@
       transformData: transformData,
       getMyTeam: getMyTeam,
       editTeam: editTeam,
-      leaveTeam: leaveTeam
+      leaveTeam: leaveTeam,
+      leader: leader,
+      concatenate, concatenate
     };
 
     return service;
@@ -70,7 +72,7 @@
         .success(complete)
         .error(failed);
     }
-    
+
     function complete(response) {
       return transformData(response);
     }

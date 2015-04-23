@@ -5,15 +5,15 @@
     .module('hackfmiApp.teams')
     .controller('TeamAddCtrl', TeamAdd);
   
-  function TeamAdd(technologies, errorservice) {
+  function TeamAdd(technologies, errorservice, navbar) {
     var vm = this;
     vm.technologies = technologies;
-    console.log(vm.technologies);
     vm.addTeam = addTeam;
     vm.selectedTechnologies = selectedTechnologies;
     vm.team = {};
     vm.team.technologies = [];
     vm.error = errorservice;
+    vm.menu = navbar.notinteam();
 
     function addTeam() {
       console.log(vm.team);

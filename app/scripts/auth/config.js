@@ -27,8 +27,7 @@
         controller: 'RegisterCtrl',
         controllerAs: 'vm',
         resolve: {
-          skills: skillsPrepService,
-          status: getStatus
+          skills: skillsPrepService
         }
       })
       .state('login', {
@@ -73,6 +72,7 @@
     return dataservice.getSkills();
   }
   function getStatus(authservice) {
+    console.log(authservice.info());
     return authservice.info();
   }
 
