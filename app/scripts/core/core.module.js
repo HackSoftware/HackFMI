@@ -3,6 +3,7 @@
 
   angular.module('hackfmiApp.core', [
     'ui.router',
-    'hackfmiApp.auth'
+    'hackfmiApp.auth',
+    'permission'
   ]);
 })();

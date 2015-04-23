@@ -7,13 +7,19 @@
   //console.log(angular.module('hackfmiApp.auth'));
 
   configure.$inject = ['$stateProvider'];
- 
+
   /* @ngInject */
   function configure($stateProvider) {
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: 'views/auth-main.html'
+        templateUrl: 'views/auth-main.html',
+        data: {
+          permissions: {
+            only: ['anonymous'],
+            redirectTo: 'teamfind'
+          }
+        }
       })
       .state('register', {
         url: '/register',
@@ -69,5 +75,5 @@
   function getStatus(authservice) {
     return authservice.info();
   }
-  
+
 })();

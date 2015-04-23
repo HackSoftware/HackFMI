@@ -24,7 +24,13 @@
         controller: 'PickMentorsCtrl',
         controllerAs: 'vm',
         resolve: {
-          mentors: mentorsPrepService
+          mentors: mentorsPrepService,
+        },
+        data: {
+          permissions: {
+            only: ['leader'],
+            redirectTo: 'teamfind'
+          }
         }
       })
     }

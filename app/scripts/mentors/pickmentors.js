@@ -13,8 +13,9 @@
       return obj;
     });
 
-    vm.addMentor = function(mentorId) {
 
+    vm.addMentor = function(mentorId) {
+      mentorservice.pickMentors(mentorId);
     }
   }
 })();

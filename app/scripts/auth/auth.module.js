@@ -5,6 +5,7 @@
     .module('hackfmiApp.auth', [
       'ui.router',
       'checklist-model',
-      'hackfmiApp.nav'
+      'hackfmiApp.nav',
+      'permission'
     ]);
 })();
