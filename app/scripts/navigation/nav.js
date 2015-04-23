@@ -15,7 +15,6 @@
     
     return service;
 
-    //def service methods here
     function anonymous() {
       var menu = [
         {

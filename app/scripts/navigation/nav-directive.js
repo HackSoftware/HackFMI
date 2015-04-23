@@ -8,7 +8,7 @@ angular.module('hackfmiApp.nav')
         navfn : '&'
       },
       templateUrl : 'views/core-navbar.html',
-      controller : function($scope, $element, $attrs){
+      controller : function($scope, $element, $attrs, $state){
 
  	$scope.defaults = {
  	  menus : []
@@ -17,7 +17,7 @@ angular.module('hackfmiApp.nav')
  	if(angular.isUndefined($attrs.navfn)){
  	  $scope.navfn = function(action){
  	    if(angular.isObject(action))
- 	      $scope.$emit('angled-navbar.menu',action);
+ 	      $scope.$emit('angled-navbar.menu', action);
  	    else
  	      $scope.$emit('angled-navbar.menu',{'action' : action});
  	  };
@@ -28,8 +28,7 @@ angular.module('hackfmiApp.nav')
         
  	$scope.hasMenus = function(){
  	  return (angular.isDefined($attrs.menus));
- 	};
-
+ 	};    
       }
     };
   }]);

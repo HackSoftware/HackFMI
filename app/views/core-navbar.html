@@ -1,5 +1,5 @@
 <ul id="main-navigation">
-  <li ng-repeat="menu in menus">
+  <li ng-repeat="menu in menus" id="{{menu.action}}">
     <a ui-sref="{{menu.action}}">{{menu.title}}</a>
   </li>
 </ul>

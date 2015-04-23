@@ -28,7 +28,7 @@
     vm.user = {};
     vm.user.known_skills = [];
     vm.errorService = errorservice;
-
+    console.log($state.get());
     // vm.isLeader = authservice.isLeader();
     // console.log(vm.isLeader);
     
@@ -36,7 +36,7 @@
       var fullName = authservice.splitName(vm.user.name);
       vm.user.first_name = fullName[0];
       vm.user.last_name = fullName[1];
-
+      
       if(isFormValid) {
          authservice.register(vm.user)
           .success(function(data) {
