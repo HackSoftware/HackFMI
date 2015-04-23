@@ -13,7 +13,8 @@
       registerTeam: registerTeam,
       transformData: transformData,
       getMyTeam: getMyTeam,
-      editTeam: editTeam
+      editTeam: editTeam,
+      leaveTeam: leaveTeam
     };
 
     return service;
@@ -61,6 +62,14 @@
       var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
       return $http.patch(DATA_URL + 'teams/' + teamId + '/', data, options);
     };
+
+    function leaveTeam() {
+       var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
+      var data = {};
+      return $http.post(DATA_URL + 'leave_team/', data, options)
+        .success(complete)
+        .error(failed);
+    }
     
     function complete(response) {
       return transformData(response);

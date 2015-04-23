@@ -50,6 +50,15 @@
            technologies: techPrepService,
            myteam: myTeamId
          }
+      })
+      .state('myteam', {
+        url: '/team',
+        templateUrl: 'views/teams-myteam.html',
+        controller: 'TeamCtrl',
+        controllerAs: 'vm',
+        resolve: {
+          team: myTeamId
+        }
       });
 
     function myTeamId(authservice, teamservice) {

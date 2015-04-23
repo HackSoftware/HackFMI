@@ -4,6 +4,7 @@
   angular.module('hackfmiApp.teams', [
     'ui.router',
     'hackfmiApp.auth',
-    'hackfmiApp.invitations'
+    'hackfmiApp.invitations',
+    'permission'
   ]);
 })();

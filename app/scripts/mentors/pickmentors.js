@@ -16,6 +16,6 @@
 
     vm.addMentor = function(mentorId) {
       mentorservice.pickMentors(mentorId);
-    }
+    };
   }
 })();

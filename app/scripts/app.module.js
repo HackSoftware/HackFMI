@@ -15,12 +15,13 @@
       'hackfmiApp.widgets',
       'hackfmiApp.core',
       'hackfmiApp.teams',
-      'hackfmiApp.invitations'
+      'hackfmiApp.invitations',
       'permission'
     ])
-    .run(function (Permission, authservice, $q) {
+    .run(function (Permission, authservice) {
 
       Permission.defineRole('anonymous', function (stateParams) {
+        console.log(stateParams);
         if (localStorage.length == 0) {
           return true;
         }
@@ -45,9 +46,9 @@
         return authservice.info()
           .then(function (data) {
             if (data.data.teammembership_set.length == 0) {
-              return true
+              return true;
             }
-            return false
+            return false;
           });
       });
 

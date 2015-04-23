@@ -3,18 +3,19 @@
   
   angular
     .module('hackfmiApp.teams')
-    .controller('MyTeamCtrl', MyTeamCtrl);
+    .controller('TeamCtrl', TeamCtrl);
   
-  function MyTeamCtrl($state, myteam, teamservice) {
+  function TeamCtrl($state, team, teamservice) {
     var vm = this;
     vm.leave = leave;
+    vm.team = team;
 
     function leave() {
       var confirmed = confirm("Сигурен ли си, че искаш да напуснеш този отбор!");
       if (confirmed) {
         teamservice.leaveTeam()
         .success(function() {
-          $state.go('findteam');
+          $state.go('teamfind.notification');
         });
       }
     }

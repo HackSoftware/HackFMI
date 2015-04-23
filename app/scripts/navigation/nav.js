@@ -7,7 +7,10 @@
   
   function navbar($state) {
     var service = {
-      anonymous: anonymous
+      anonymous: anonymous,
+      leader: leader,
+      notinteam: notinteam,
+      inteam: inteam
     };
     
     return service;
@@ -17,7 +20,7 @@
       var menu = [
         {
           title: "Ментори",
-          action: 'mentors'
+          action: 'showmentors'
         },
         {
           title: "Регистрация",
@@ -30,5 +33,35 @@
       ];
       return menu;
     };
+
+    function leader() {
+      var menu = [
+        {
+          title: "Ментори",
+          action: 'pickmentors'
+        },
+        {
+          title: "Моят отбор",
+          action: 'myteam'
+        },
+        {
+          title: "Търсене на отбор",
+          action: 'teamfind.notification'
+        },
+        {
+          title: "Изход",
+          action: 'logout'
+        }
+      ];
+      return menu;
+    };
+
+    function notinteam() {
+      
+    };
+
+    function inteam() {
+      
+    };   
   }
 })();

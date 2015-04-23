@@ -1,5 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('hackfmiApp.mentors', []);
+  angular.module('hackfmiApp.mentors', [
+    'permission'
+  ]);
 })();

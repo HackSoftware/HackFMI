@@ -23,7 +23,6 @@
     
     vm.status = status;
     vm.skills = skills;
-    console.log(vm.status);
     vm.register = register;
     vm.selectedSkills = selectedSkills;
     vm.user = {};

@@ -2,6 +2,7 @@
   'use strict';
   
   angular.module('hackfmiApp.nav', [
-    'ngSanitize'
+    'ngSanitize',
+    'permission'
   ]);
 })();

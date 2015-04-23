@@ -24,7 +24,7 @@
         controller: 'PickMentorsCtrl',
         controllerAs: 'vm',
         resolve: {
-          mentors: mentorsPrepService,
+          mentors: mentorsPrepService
         },
         data: {
           permissions: {
@@ -32,7 +32,7 @@
             redirectTo: 'teamfind'
           }
         }
-      })
+      });
     }
 
   function mentorsPrepService(mentorservice) {
