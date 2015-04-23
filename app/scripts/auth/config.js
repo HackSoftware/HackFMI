@@ -21,7 +21,8 @@
         controller: 'RegisterCtrl',
         controllerAs: 'vm',
         resolve: {
-          skills: skillsPrepService
+          skills: skillsPrepService,
+          status: getStatus
         }
       })
       .state('login', {
@@ -60,10 +61,13 @@
       .state('logout', {
         url: '/logout',
         controller: 'LogoutCtrl'
-      })
+      });
   }
   function skillsPrepService(dataservice) {
     return dataservice.getSkills();
+  }
+  function getStatus(authservice) {
+    return authservice.info();
   }
   
 })();

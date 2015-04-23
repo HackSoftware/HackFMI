@@ -6,7 +6,7 @@
       // 'ngAnimate',
       // 'ngCookies',
       // 'ngResource',
-      // 'ngSanitize',
+      'ngSanitize',
       // 'ngTouch',
       'ui.router',
       'checklist-model',
@@ -15,7 +15,7 @@
       'hackfmiApp.widgets',
       'hackfmiApp.core',
       'hackfmiApp.teams'
-    ])
+    ]);
   //   .config(configure)
   //   .run(function($rootScope, $templateCache) {
   //     $rootScope.$on('$viewContentLoaded', function() {

@@ -16,7 +16,7 @@
       setNewPassword: setNewPassword,
       splitName: splitName,
       info: info,
-      getTeamId: getTeamId
+      token: token
     };
 
     return service;
@@ -56,16 +56,14 @@
         .error(failed);
     }
 
-    function getTeamId() {
-      var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
-      return $http.get(DATA_URL + 'me/', options)
-        .success(function(data) {
-          var id = data.teammembership_set[0].team;
-          data.id = id;
-          return id;
-        })
-        .error(failed);
-    }
+    function token() {
+      if(angular.isDefined(localStorage.token)) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    };
 
     function splitName(name) {
       var fullName = name.split(' ');
@@ -78,17 +76,12 @@
     }
 
     function failed(error, status) {
-      console.log(status);
-      
-      if(status !== 500) {
         var finalError = [];
         for (var er in error) {
           finalError.push(error[er][0]);      
         }
         errorservice.setError(finalError);
         return error;
-      }
-      return status;
     };  
   }
 })();
