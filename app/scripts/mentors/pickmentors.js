@@ -5,17 +5,28 @@
     .module('hackfmiApp.mentors')
     .controller('PickMentorsCtrl', PickMentors);
 
-  function PickMentors($q, $sce, mentorservice, teamservice, mentors) {
+  function PickMentors($q, $sce, mentorservice, teamservice, mentors, myTeam) {
     /*jshint validthis: true */
     var vm = this;
+    vm.team = myTeam;
+
     vm.mentors = mentors.map(function(obj) {
       obj.description = $sce.trustAsHtml(obj.description);
       return obj;
     });
 
-
+    // console.log(myTeamId);
     vm.addMentor = function(mentorId) {
-      mentorservice.pickMentors(mentorId);
+      mentorservice.pickMentor(mentorId);
+      vm.team.mentors.push(mentorId);
+    };
+
+    vm.removeMentor = function(mentorId) {
+      mentorservice.unpickMentor(mentorId);
+      var index = vm.team.mentors.indexOf(mentorId);
+      if (index > -1) {
+        vm.team.mentors.splice(index, 1);
+      }
     };
   }
 })();

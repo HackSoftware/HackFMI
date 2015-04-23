@@ -20,7 +20,6 @@
       return this.errorMessage = msg;
     };
     function clear() {
-      console.log('clear fn');
       this.errorMessage = null;
     };
   }
