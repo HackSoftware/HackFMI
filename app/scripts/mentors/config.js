@@ -24,7 +24,8 @@
         controller: 'PickMentorsCtrl',
         controllerAs: 'vm',
         resolve: {
-          mentors: mentorsPrepService
+          mentors: mentorsPrepService,
+          myTeam: myTeam
         },
         data: {
           permissions: {
@@ -40,5 +41,17 @@
       .then(function(response) {
         return response.data;
       });
-  }
+  };
+
+  function myTeam(authservice, teamservice) {
+    return authservice.info()
+    .then(function(response) {
+        var tid = response.data.teammembership_set[0].team;
+        return teamservice.getMyTeam(tid)
+        .then(function(response) {
+          return response.data[0];
+        });
+    });
+  };
+
 })();

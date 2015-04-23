@@ -1,12 +1,19 @@
 <div class="card card-container" id="register-form">
+  <div class="alert alert-warning" role="alert">Можете да изберете максимум 7 ментора.</div>
   <div ng-repeat="mentor in vm.mentors">
     <h3>{{ mentor.name }}</h3>
-    <div class="row marketing">
-      <div class="col-sm-3">
+    <div class="row">
+      <div class="col-sm-4 text-center">
         <img ng-src="{{ mentor.picture }}" alt="{{ mentor.name }}" class="thumbnail col-sm-12">
-        <button class="btn btn-primary" ng-click="vm.addMentor(mentor.id)">Избери за ментор</button>
+        <button class="btn btn-primary" ng-click="vm.addMentor(mentor.id)" ng-show="vm.team.mentors.indexOf(mentor.id)==-1"  ng-disabled="vm.team.mentors.length >= 7">
+          Избери за ментор
+        </button>
+
+        <button class="btn btn-danger" ng-click="vm.removeMentor(mentor.id)"  ng-show="vm.team.mentors.indexOf(mentor.id)!=-1">
+          Премахни от избрани
+        </button>
       </div>
-      <p class="col-sm-9"  ng-bind-html="mentor.description"></p>
+      <p class="col-sm-8"  ng-bind-html="mentor.description"></p>
     </div>
   </div>
 </div>

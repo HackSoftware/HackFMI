@@ -10,7 +10,8 @@
 
     var service = {
       getMentors: getMentors,
-      pickMentors: pickMentors
+      pickMentor: pickMentor,
+      unpickMentor: unpickMentor
     };
 
     return service;
@@ -29,18 +30,34 @@
       }
     }
 
-    function pickMentors(mentorId) {
+    function pickMentor(mentorId) {
       var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
 
       return $http.put(DATA_URL + 'assign_mentor/', { id: mentorId }, options)
-        .then(pickMentorsComplete)
-        .catch(pickMentorsFailed);
+        .then(pickMentorComplete)
+        .catch(pickMentorFailed);
 
-      function pickMentorsComplete(response) {
+      function pickMentorComplete(response) {
         return response;
       }
 
-      function pickMentorsFailed(error) {
+      function pickMentorFailed(error) {
+        return error;
+      }
+    }
+
+    function unpickMentor(mentorId) {
+      var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
+
+      return $http.post(DATA_URL + 'assign_mentor/', { id: mentorId }, options)
+        .then(unpickMentorComplete)
+        .catch(unpickMentorFailed);
+
+      function unpickMentorComplete(response) {
+        return response;
+      }
+
+      function unpickMentorFailed(error) {
         return error;
       }
     }
