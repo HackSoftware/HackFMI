@@ -15,6 +15,7 @@
       'hackfmiApp.widgets',
       'hackfmiApp.core',
       'hackfmiApp.teams',
+      'hackfmiApp.invitations'
       'permission'
     ])
     .run(function (Permission, authservice, $q) {

@@ -8,12 +8,28 @@
   function configure ($stateProvider) {
     $stateProvider
       .state('teamfind', {
+        templateUrl: 'views/teams-teams.html'
+      })
+      .state('teamfind.notification', {
         url: '/teamfind',
-        templateUrl: 'views/teams-teamfind.html',
-        controller: 'TeamFindCtrl',
-        controllerAs: 'vm',
-        resolve: {
-          teams: teamsPrepService
+        templateUrl: 'views/teams-teams.html',
+        views: {
+          'notification': {
+            controller: 'NotificationsCtrl',
+            controllerAs: 'nm',
+            templateUrl: 'views/teams-notification.html',
+            resolve: {
+              invs: invitationsPrepS
+            }
+          },
+          'teamfind': {
+            controller: 'TeamFindCtrl',
+            controllerAs: 'vm',
+            templateUrl: 'views/teams-teamfind.html',
+            resolve: {
+               teams: teamsPrepService
+            }
+          }
         }
       })
       .state('teamadd', {
@@ -53,6 +69,12 @@
     }
     function techPrepService(dataservice) {
       return dataservice.getSkills();
+    }
+    function invitationsPrepS(invitations) {
+      return invitations.getInvites()
+        .then(function(response) {
+          return response.data;
+        });
     }
   }
 })();

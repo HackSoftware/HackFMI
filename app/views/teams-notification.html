@@ -1,0 +1,19 @@
+<div ng-show="error">
+  <div class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
+  </div>
+  <div ng-show="success">
+    <div class="alert alert-success" role="alert">
+      {{success}}
+    </div>
+</div>
+
+<div class="alert alert-info" ng-repeat="invitation in nm.invs" id={{invitation.id}}>
+  <p>Покана за участие в отбор: <strong>{{invitation.team.name}}</strong></p>
+  <p class="text-center">
+    <br>
+    <button class="btn btn-primary" ng-click="nm.accept(invitation.id)">Приемам</button>
+    <button class="btn btn-danger" ng-click="nm.decline(invitation.id)">Отказвам</button>
+  </p>
+</div>
