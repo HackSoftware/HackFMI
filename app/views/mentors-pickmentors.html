@@ -4,6 +4,7 @@
     <div class="row marketing">
       <div class="col-sm-3">
         <img ng-src="{{ mentor.picture }}" alt="{{ mentor.name }}" class="thumbnail col-sm-12">
+        <button class="btn btn-primary" ng-click="vm.addMentor(mentor.id)">Избери за ментор</button>
       </div>
       <p class="col-sm-9"  ng-bind-html="mentor.description"></p>
     </div>

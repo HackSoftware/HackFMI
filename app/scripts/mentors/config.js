@@ -18,9 +18,21 @@
           mentors: mentorsPrepService
         }
       })
+      .state('pickmentors', {
+        url: '/pickmentors',
+        templateUrl: 'views/mentors-pickmentors.html',
+        controller: 'PickMentorsCtrl',
+        controllerAs: 'vm',
+        resolve: {
+          mentors: mentorsPrepService
+        }
+      })
     }
 
   function mentorsPrepService(mentorservice) {
-    return mentorservice.getMentors();
+    return mentorservice.getMentors()
+      .then(function(response) {
+        return response.data;
+      });
   }
 })();
