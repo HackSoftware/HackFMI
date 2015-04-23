@@ -3,14 +3,18 @@
 
   angular
     .module('hackfmiApp.mentors')
-    .controller('ShowMentorsCtrl', ShowMentors);
+    .controller('PickMentorsCtrl', PickMentors);
 
-  function ShowMentors($q, $sce, mentorservice, mentors) {
+  function PickMentors($q, $sce, mentorservice, teamservice, mentors) {
     /*jshint validthis: true */
     var vm = this;
     vm.mentors = mentors.map(function(obj) {
       obj.description = $sce.trustAsHtml(obj.description);
       return obj;
     });
+
+    vm.addMentor = function(mentorId) {
+
+    }
   }
 })();

@@ -20,12 +20,10 @@
         .catch(getMentorsFailed);
 
       function getMentorsComplete(response) {
-        console.log(response);
         return response;
       }
 
       function getMentorsFailed(error) {
-        console.log(error);
         return error;
       }
     }
