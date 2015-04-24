@@ -21,7 +21,6 @@
     .run(function (Permission, authservice) {
 
       Permission.defineRole('anonymous', function (stateParams) {
-        console.log(stateParams);
         if (localStorage.length == 0) {
           return true;
         }

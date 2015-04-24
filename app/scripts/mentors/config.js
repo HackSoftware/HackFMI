@@ -16,6 +16,12 @@
         controllerAs: 'vm',
         resolve: {
           mentors: mentorsPrepService
+        },
+        data: {
+          permissions: {
+            except: ['leader'],
+            redirectTo: 'pickmentors'
+          }
         }
       })
       .state('pickmentors', {
@@ -30,7 +36,7 @@
         data: {
           permissions: {
             only: ['leader'],
-            redirectTo: 'teamfind'
+            redirectTo: 'teamfind.notification'
           }
         }
       });

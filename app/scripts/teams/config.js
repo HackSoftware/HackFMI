@@ -44,6 +44,11 @@
         controllerAs: 'vm',
         resolve: {
           technologies: techPrepService
+        },
+        data: {
+          permissions: {
+            only: ['notinteam']
+          }
         }
       })
       .state('teamedit', {
@@ -54,7 +59,12 @@
          resolve: {
            technologies: techPrepService,
            myteam: myTeam
-         }
+         },
+        data: {
+          permissions: {
+            only: ['leader']
+          }
+        }
       })
       .state('myteam', {
         url: '/team',
@@ -64,6 +74,12 @@
         resolve: {
           team: myTeam,
           me: meInfo
+        },
+        data: {
+          permissions: {
+            except: ['anonymous'],
+            redirectTo: ['login']
+          }
         }
       });
 
@@ -81,7 +97,6 @@
           });
       return teamservice.getMyTeam(tid)
         .then(function(response) {
-          console.log(response.data);
           return response.data[0];
         });
     };
