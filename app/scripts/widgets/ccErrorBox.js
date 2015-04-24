@@ -8,7 +8,7 @@
   /* @ngInject */
   function ccErrorBox () {
     var directive = {
-      templateUrl: 'scripts/widgets/errorBox.html',
+      templateUrl: 'views/errorBox.html',
       restrict: 'A',
       link: link
     };
