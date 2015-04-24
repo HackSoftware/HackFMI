@@ -5,9 +5,10 @@
     .module('hackfmiApp.mentors')
     .controller('PickMentorsCtrl', PickMentors);
 
-  function PickMentors($q, $sce, mentorservice, teamservice, mentors, myTeam) {
+  function PickMentors($q, $sce, mentorservice, teamservice, mentors, myTeam, navbar) {
     var vm = this;
     vm.team = myTeam;
+    vm.menu = navbar.leader();
 
     vm.mentors = mentors.map(function(obj) {
       obj.description = $sce.trustAsHtml(obj.description);
