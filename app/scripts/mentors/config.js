@@ -12,16 +12,15 @@
         templateUrl: 'views/mentors-showmentors.html',
         controller: 'ShowMentorsCtrl',
         controllerAs: 'vm',
-        data: {
-          permissions: {
-            only: ['anonymous', 'notinteam', 'inteam'],
-            redirectTo: 'teamfind.notification'
-          }
-        },
         resolve: {
           mentors: mentorsPrepService
+        },
+        data: {
+          permissions: {
+            except: ['leader'],
+            redirectTo: 'teamfind.notification'
+          }
         }
-
       })
       .state('pickmentors', {
         url: '/pickmentors',

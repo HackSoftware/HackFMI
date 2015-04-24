@@ -5,7 +5,7 @@
     .module('hackfmiApp.teams')
     .controller('TeamAddCtrl', TeamAdd);
 
-  function TeamAdd(technologies, errorservice, navbar) {
+  function TeamAdd($state, technologies, errorservice, navbar, teamservice) {
     var vm = this;
     vm.technologies = technologies;
     vm.addTeam = addTeam;
@@ -16,7 +16,8 @@
     vm.menu = navbar.notinteam();
 
     function addTeam() {
-      console.log(vm.team);
+      teamservice.registerTeam(vm.team);
+      $state.go('myteam');
     }
 
     function selectedTechnologies(technologies) {
