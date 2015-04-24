@@ -17,8 +17,8 @@
         },
         data: {
           permissions: {
-            except: ['leader'],
-            redirectTo: 'teamfind.notification'
+            only: ['leader', 'inteam', 'notinteam', 'anonymous'],
+            redirectTo: 'pickmentors'
           }
         }
       })
@@ -34,7 +34,7 @@
         data: {
           permissions: {
             only: ['leader'],
-            redirectTo: 'teamfind.notification'
+            redirectTo: 'showmentors'
           }
         }
       });
