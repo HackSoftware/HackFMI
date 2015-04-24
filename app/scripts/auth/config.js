@@ -4,13 +4,25 @@
   angular
     .module('hackfmiApp.auth')
     .config(configure);
+  //console.log(angular.module('hackfmiApp.auth'));
+
+  configure.$inject = ['$stateProvider'];
 
   /* @ngInject */
-  function configure ($stateProvider) {
+  function configure($stateProvider) {
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: 'views/auth-main.html'
+        templateUrl: 'views/auth-main.html',
+        controller: function($scope, navbar) {
+          $scope.menu = navbar.anonymous();
+        },
+        data: {
+          permissions: {
+            only: ['anonymous'],
+            redirectTo: 'teamfind.notification'
+          }
+        }
       })
       .state('register', {
         url: '/register',
@@ -19,13 +31,25 @@
         controllerAs: 'vm',
         resolve: {
           skills: skillsPrepService
+        },
+        data: {
+          permissions: {
+            only: ['anonymous'],
+            redirectTo: 'teamfind.notification'
+          }
         }
       })
       .state('login', {
         url: '/login',
         templateUrl: 'views/auth-login.html',
         controller: 'LoginCtrl',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        data: {
+          permissions: {
+            only: ['anonymous'],
+            redirectTo: 'teamfind.notification'
+          }
+        }
       })
       .state('activate-msg', {
         templateUrl: 'views/auth-activate.html'
@@ -34,13 +58,25 @@
         url: '/activate/:uid/:token',
         controller: 'ActivateCtrl',
         controllerAs: 'vm',
-        templateUrl: 'views/auth-activate-success.html'
+        templateUrl: 'views/auth-activate-success.html',
+        data: {
+          permissions: {
+            only: ['anonymous'],
+            redirectTo: 'teamfind.notification'
+          }
+        }
       })
       .state('resetpassword', {
         url: '/resetpassword',
         templateUrl: 'views/auth-resetpassword.html',
         controller: 'resetPasswordCtrl',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        data: {
+          permissions: {
+            only: ['anonymous'],
+            redirectTo: 'teamfind.notification'
+          }
+        }
       })
       .state('resetpassword-success', {
         templateUrl: 'views/auth-resetpassword-success.html'
@@ -49,14 +85,33 @@
         url: '/reset-confirm/:uid/:token',
         templateUrl: 'views/auth-setnewpassword.html',
         controller: 'setNewPasswordCtrl',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        data: {
+          permissions: {
+            only: ['anonymous'],
+            redirectTo: 'teamfind.notification'
+          }
+        }
       })
       .state('setnewpassword-success', {
         templateUrl: 'views/auth-setnewpassword-success.html'
       })
-    }
-
+      .state('logout', {
+        url: '/logout',
+        controller: 'LogoutCtrl',
+        data: {
+          permissions: {
+            except: ['anonymous'],
+            redirectTo: 'login'
+          }
+        }
+      });
+  }
   function skillsPrepService(dataservice) {
     return dataservice.getSkills();
   }
+  function getStatus(authservice) {
+    return authservice.info();
+  }
+
 })();

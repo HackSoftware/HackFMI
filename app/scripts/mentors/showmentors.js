@@ -5,9 +5,26 @@
     .module('hackfmiApp.mentors')
     .controller('ShowMentorsCtrl', ShowMentors);
 
-  function ShowMentors($q, mentorservice, mentors) {
-    /*jshint validthis: true */
+  function ShowMentors($sce, mentorservice, mentors, navbar, authservice) {
     var vm = this;
-    vm.mentors = mentors
+    if(localStorage.length === 0) {
+      vm.menu = navbar.anonymous();
+    }
+    else {
+      authservice.info()
+        .then(function(response) {
+          if(response.data.teammembership_set.length == 0 ) {
+            vm.menu = navbar.notinteam();
+          }
+          else {
+            vm.menu = navbar.inteam();
+          }
+        });
+    }
+
+    vm.mentors = mentors.map(function(obj) {
+      obj.description = $sce.trustAsHtml(obj.description);
+      return obj;
+    });
   }
 })();

@@ -1,8 +1,8 @@
 <div class="card card-container" id="register-form">
   <div class="alert alert-warning" role="alert">Това са всички регистрирани отбори, който си търсят екип. Ако нечия идея ти се струва интересна и мислиш, че можеш да им помогнеш, <strong>пиши email на създателя</strong> за да те добави в екипа.</div>
-  <div ng-repeat="team in vm.teams">
+  <div ng-repeat="team in vm.teams track by team.id">
     <h3>
-      {{team.name}}
+      {{team.name}} - ({{team.members.length}}/6)
     </h3>
     <p>
       {{team.idea_description}}
@@ -10,19 +10,29 @@
     <strong>Създател:</strong> {{team.leader.first_name}} - {{team.leader.email}}
     <p>
       <strong>Технологии:</strong> <span>{{ team.techNames }}</span>
+      <br>
+      <strong>Стая:</strong> <span>{{ team.room }}</span>
     </p>
-
-    <hr>
-  </div>
-  <div ng-show="no_teams">
-    <div class="alert alert-danger text-center" role="alert">
-      <p>
-        Все още няма регистрирани отбори. Можеш да създадеш първия отбор за HackFMI5.
-
-      </p>
-      <p></p>
-      <a ui-sref="teamadd" class="btn btn-primary">Създай отбор!</a>
+    <p>
+      <span ng-show="team.need_more_members" class="label label-success">Отбора търси още хора за екип</span>
+      <span ng-hide="team.need_more_members"class="label label-warning">Отбора не търси повече хора</span>
+    </p>
+    <div ng-show="team.need_more_members">
+      {{team.members_needed_desc}}
     </div>
-
+    <p>
   </div>
+  <hr>
+</div>
+<div ng-show="no_teams">
+  <div class="alert alert-danger text-center" role="alert">
+    <p>
+      Все още няма регистрирани отбори. Можеш да създадеш първия отбор за HackFMI5.
+
+    </p>
+    <p></p>
+    <a ui-sref="teamadd" class="btn btn-primary">Създай отбор!</a>
+  </div>
+
+</div>
 </div>

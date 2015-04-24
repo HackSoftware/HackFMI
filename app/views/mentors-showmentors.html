@@ -1,13 +1,12 @@
+<angled-navbar menus="vm.menu"></angled-navbar>
 <div class="card card-container" id="register-form">
   <div ng-repeat="mentor in vm.mentors">
     <h3>{{ mentor.name }}</h3>
     <div class="row marketing">
-      <img ng-src="{{ mentor.picture }}" alt="{{ mentor.name }}" class="col-sm-3">
-
-      <p class="col-sm-9">
-        {{ mentor.description }}
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur sint molestias iste provident rerum obcaecati totam quis voluptatem maxime accusamus ab, culpa magni, autem, temporibus blanditiis! Dolor, tempora pariatur eligendi!
-      </p>
+      <div class="col-sm-3">
+        <img ng-src="{{ mentor.picture }}" alt="{{ mentor.name }}" class="thumbnail col-sm-12">
+      </div>
+      <p class="col-sm-9"  ng-bind-html="mentor.description"></p>
     </div>
   </div>
 </div>

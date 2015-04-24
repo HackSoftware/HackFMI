@@ -1,17 +1,27 @@
 (function() {
   'use strict';
-  
+
   angular
     .module('hackfmiApp.teams')
     .controller('TeamAddCtrl', TeamAdd);
-  
-  function TeamAdd(skills) {
+
+  function TeamAdd($state, technologies, errorservice, navbar, teamservice) {
     var vm = this;
-    vm.skills = skills; 
-    activate();
-    
-    function activate() {
-      
-    };
-  };
+    vm.technologies = technologies;
+    vm.addTeam = addTeam;
+    vm.selectedTechnologies = selectedTechnologies;
+    vm.team = {};
+    vm.team.technologies = [];
+    vm.error = errorservice;
+    vm.menu = navbar.notinteam();
+
+    function addTeam() {
+      teamservice.registerTeam(vm.team);
+      $state.go('myteam');
+    }
+
+    function selectedTechnologies(technologies) {
+      return technologies.length > 0;
+    }
+  }
 })();

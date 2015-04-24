@@ -1,5 +1,9 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    angular.module('hackfmiApp.widgets', []);
+  angular
+    .module('hackfmiApp.widgets', [
+      'ui.router',
+      'permission'
+    ]);
 })();

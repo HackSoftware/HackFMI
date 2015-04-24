@@ -1,12 +1,10 @@
 (function() {
   'use strict';
 
-  var mentors = angular.module('hackfmiApp.mentors');
+  angular
+    .module('hackfmiApp.mentors')
+    .config(configure);
 
-
-  mentors.config(configure);
-
-  /* @ngInject */
   function configure ($stateProvider) {
     $stateProvider
       .state('showmentors', {
@@ -16,11 +14,48 @@
         controllerAs: 'vm',
         resolve: {
           mentors: mentorsPrepService
+        },
+        data: {
+          permissions: {
+            only: ['leader', 'inteam', 'notinteam', 'anonymous'],
+            redirectTo: 'pickmentors'
+          }
         }
       })
-    }
+      .state('pickmentors', {
+        url: '/pickmentors',
+        templateUrl: 'views/mentors-pickmentors.html',
+        controller: 'PickMentorsCtrl',
+        controllerAs: 'vm',
+        resolve: {
+          mentors: mentorsPrepService,
+          myTeam: myTeam
+        },
+        data: {
+          permissions: {
+            only: ['leader'],
+            redirectTo: 'showmentors'
+          }
+        }
+      });
+  }
 
   function mentorsPrepService(mentorservice) {
-    return mentorservice.getMentors();
-  }
+    return mentorservice.getMentors()
+      .then(function(response) {
+        return response.data;
+      });
+  };
+
+  function myTeam(authservice, teamservice) {
+    return authservice.info()
+      .then(function(response) {
+        var tid = response.data.teammembership_set[0].team;
+        return teamservice.getMyTeam(tid)
+          .then(function(response) {
+            return response.data[0];
+          });
+      });
+  };
+
 })();

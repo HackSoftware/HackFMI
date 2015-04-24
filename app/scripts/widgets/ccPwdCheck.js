@@ -1,14 +1,15 @@
 (function() {
   'use strict';
 
-  angular.module('hackfmiApp.widgets')
+  angular
+    .module('hackfmiApp.widgets')
     .directive('ccPwdCheck', ccPwdCheck);
 
   function ccPwdCheck() {
     var directive = {
       require: 'ngModel',
       link: link
-    }
+    };
 
     return directive;
 

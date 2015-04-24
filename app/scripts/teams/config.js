@@ -1,21 +1,40 @@
 (function() {
   'use strict';
 
-  var teams = angular.module('hackfmiApp.teams');
+  angular
+    .module('hackfmiApp.teams')
+    .config(configure);
 
-
-  teams.config(configure);
-
-  /* @ngInject */
   function configure ($stateProvider) {
     $stateProvider
       .state('teamfind', {
-        url: '/teamfind',
-        templateUrl: 'views/teams-teamfind.html',
-        controller: 'TeamFindCtrl',
-        controllerAs: 'vm',
+        templateUrl: 'views/teams-teams.html',
         resolve: {
-          teams: teamsPrepService
+          me: meInfo
+        },
+        controller: 'TeamNavCtrl',
+        controllerAs: 'vm'
+      })
+      .state('teamfind.notification', {
+        url: '/teamfind',
+        templateUrl: 'views/teams-teams.html',
+        views: {
+          'notification': {
+            controller: 'NotificationsCtrl',
+            controllerAs: 'nm',
+            templateUrl: 'views/teams-notification.html',
+            resolve: {
+              invs: invitationsPrepS
+            }
+          },
+          'teamfind': {
+            controller: 'TeamFindCtrl',
+            controllerAs: 'vm',
+            templateUrl: 'views/teams-teamfind.html',
+            resolve: {
+              teams: teamsPrepService
+            }
+          }
         }
       })
       .state('teamadd', {
@@ -24,14 +43,94 @@
         controller: 'TeamAddCtrl',
         controllerAs: 'vm',
         resolve: {
-          skills: skillsPrepService
+          technologies: techPrepService
+        },
+        data: {
+          permissions: {
+            only: ['notinteam']
+          }
+        }
+      })
+      .state('teamedit', {
+        url: '/teamedit',
+        templateUrl: 'views/teams-teamedit.html',
+        controller: 'TeamEditCtrl',
+        controllerAs: 'vm',
+        resolve: {
+          technologies: techPrepService,
+          myteam: myTeam
+        },
+        data: {
+          permissions: {
+            only: ['leader']
+          }
+        }
+      })
+      .state('myteam', {
+        url: '/team',
+        templateUrl: 'views/teams-myteam.html',
+        controller: 'TeamCtrl',
+        controllerAs: 'vm',
+        resolve: {
+          team: myTeam,
+          me: meInfo
+        },
+        data: {
+          permissions: {
+            except: ['anonymous'],
+            redirectTo: 'login'
+          }
+        }
+      })
+      .state('teamspublic', {
+        url: '/teamsall',
+        templateUrl: 'views/teams-public.html',
+        controller: 'TeamsPublicCtrl',
+        controllerAs: 'vm',
+        resolve: {
+          teams: teamsPublicService
+        },
+        data: {
+          permissions: {
+            only: ['anonymous']
+          }
         }
       });
-  }
-  function teamsPrepService(teamservice) {
-    return teamservice.getTeams();
-  }
-  function skillsPrepService(dataservice) {
-    return dataservice.getSkills();
+
+    function meInfo(authservice) {
+      return authservice.info()
+        .then(function(response) {
+          return response.data;
+        });
+    }
+
+    function myTeam(authservice, teamservice) {
+      return authservice.info()
+        .then(function(response) {
+          var tid = response.data.teammembership_set[0].team;
+          return teamservice.getMyTeam(tid)
+            .then(function(response) {
+              return response.data[0];
+            });
+        });
+    };
+    function teamsPublicService(teamservice) {
+      return teamservice.getTeamsPublic()
+        .then(function(response) {
+          return response.data;
+        });
+    }
+    function teamsPrepService(teamservice) {
+      return teamservice.getTeams();
+    }
+    function techPrepService(dataservice) {
+      return dataservice.getSkills();
+    }
+    function invitationsPrepS(invitations) {
+      return invitations.getInvites()
+        .then(function(response) {
+          return response.data;
+        });
+    }
   }
 })();

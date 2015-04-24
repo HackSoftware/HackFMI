@@ -1,0 +1,39 @@
+<angled-navbar menus="vm.menu"></angled-navbar>
+<div class="card card-container" id="register-form">
+  <button class="btn btn-danger" ng-click="vm.leave()" style="float:right;" data-toggle="confirmation">Напусни отбора!</button>
+
+  <a ui-sref="teamedit" ng-show="vm.me.teammembership_set[0].is_leader">
+    <button class="btn btn-success">Промени отбора</button>
+  </a>
+
+  <h3>
+    {{vm.team.name}}
+  </h3>
+  <p>
+    {{vm.team.idea_description}}
+  </p>
+  <strong>Създател:</strong> {{vm.leader.first_name }} - {{vm.leader.email}}
+  <p>
+    <strong>Технологии:</strong> {{vm.techNames}}
+    <br>
+    <strong>Стая:</strong> {{vm.room}}
+  </p>
+  <p></p>
+  <table class="table table-bordered table-hover" ng-show="vm.team.members.length != 1">
+    <tr>
+      <th>
+        Име
+      </th>
+      <th>
+        Email
+      </th>
+    </tr>
+    <tr ng-repeat="member in vm.team.members">
+      <td>{{member.first_name + ' ' + member.last_name}}</td>
+      <td>{{member.email}}</td>
+    </tr>
+  </table>
+  <div class="alert alert-danger text-center" role="alert" ng-show="vm.team.members.length == 1">
+    <p>Все още нямаш съотборници! За да участваш трябва да си в отбор, който включва поне двама участника.</p>
+  </div>
+</div>
