@@ -16,7 +16,7 @@
       editTeam: editTeam,
       leaveTeam: leaveTeam,
       leader: leader,
-      concatenate, concatenate,
+      concatenate: concatenate,
       getTeamsPublic: getTeamsPublic
     };
 
