@@ -13,23 +13,11 @@
           me: meInfo
         },
         controller: 'TeamNavCtrl',
-        controllerAs: 'vm',
-        data: {
-          permissions: {
-            except: ['anonymous'],
-            redirectTo: 'login'
-          }
-        }
+        controllerAs: 'vm'
       })
       .state('teamfind.notification', {
         url: '/teamfind',
         templateUrl: 'views/teams-teams.html',
-        data: {
-          permissions: {
-            except: ['anonymous'],
-            redirectTo: 'login'
-          }
-        },
         views: {
           'notification': {
             controller: 'NotificationsCtrl',
@@ -93,6 +81,20 @@
             redirectTo: 'login'
           }
         }
+      })
+      .state('teamspublic', {
+        url: '/teamsall',
+        templateUrl: 'views/teams-public.html',
+        controller: 'TeamsPublicCtrl',
+        controllerAs: 'vm',
+        resolve: {
+          teams: teamsPublicService
+        },
+        data: {
+          permissions: {
+            only: ['anonymous']
+          }
+        }
       });
 
     function meInfo(authservice) {
@@ -102,17 +104,22 @@
         });
     }
 
-  function myTeam(authservice, teamservice) {
-    return authservice.info()
-      .then(function(response) {
-        var tid = response.data.teammembership_set[0].team;
-        return teamservice.getMyTeam(tid)
-          .then(function(response) {
-            return response.data[0];
-          });
-      });
-  };
-
+    function myTeam(authservice, teamservice) {
+      return authservice.info()
+        .then(function(response) {
+          var tid = response.data.teammembership_set[0].team;
+          return teamservice.getMyTeam(tid)
+            .then(function(response) {
+              return response.data[0];
+            });
+        });
+    };
+    function teamsPublicService(teamservice) {
+      return teamservice.getTeamsPublic()
+        .then(function(response) {
+          return response.data;
+        });
+    }
     function teamsPrepService(teamservice) {
       return teamservice.getTeams();
     }

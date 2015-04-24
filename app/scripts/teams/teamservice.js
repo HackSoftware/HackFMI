@@ -16,7 +16,8 @@
       editTeam: editTeam,
       leaveTeam: leaveTeam,
       leader: leader,
-      concatenate, concatenate
+      concatenate, concatenate,
+      getTeamsPublic: getTeamsPublic
     };
 
     return service;
@@ -72,6 +73,10 @@
         .success(complete)
         .error(failed);
     }
+
+    function getTeamsPublic() {
+      return $http.get(DATA_URL + 'public-teams/');
+    };
 
     function complete(response) {
       return transformData(response);

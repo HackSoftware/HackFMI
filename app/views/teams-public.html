@@ -1,0 +1,25 @@
+<div class="card card-container" id="register-form">
+  <div ng-repeat="team in vm.teams">
+    <h3>
+      {{team.name}} - ({{team.members.length}}/6)
+    </h3>
+    <p>
+      {{team.idea_description}}
+    </p>
+    <p>
+      <strong>Стая:</strong> <span>{{ team.room }}</span>
+    </p>
+    <p></p>
+  <table class="table table-bordered table-hover">
+    <tr>
+      <th>
+        Име
+      </th>
+    </tr>
+    <tr ng-repeat="member in team.members">
+      <td>{{member.first_name + ' ' + member.last_name}}</td>
+    </tr>
+  </table>
+  </div>
+  <hr>
+</div>

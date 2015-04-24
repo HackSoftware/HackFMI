@@ -22,6 +22,10 @@
           action: 'showmentors'
         },
         {
+          title: "Всички отбори",
+          action: 'teamspublic'
+        },
+        {
           title: "Регистрация",
           action: 'register'
         },
