@@ -1,10 +1,10 @@
 (function() {
   'use strict';
-  
+
   angular
     .module('hackfmiApp.nav')
     .factory('navbar', navbar);
-  
+
   function navbar($state) {
     var service = {
       anonymous: anonymous,
@@ -12,7 +12,7 @@
       notinteam: notinteam,
       inteam: inteam
     };
-    
+
     return service;
 
     function anonymous() {
@@ -78,7 +78,7 @@
     };
 
     function inteam() {
-            var menu = [
+      var menu = [
         {
           title: "Ментори",
           action: 'showmentors'
@@ -97,6 +97,6 @@
         }
       ];
       return menu;
-    };   
+    };
   }
 })();

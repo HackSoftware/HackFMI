@@ -13,11 +13,23 @@
           me: meInfo
         },
         controller: 'TeamNavCtrl',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        data: {
+          permissions: {
+            except: ['anonymous'],
+            redirectTo: 'login'
+          }
+        }
       })
       .state('teamfind.notification', {
         url: '/teamfind',
         templateUrl: 'views/teams-teams.html',
+        data: {
+          permissions: {
+            except: ['anonymous'],
+            redirectTo: 'login'
+          }
+        },
         views: {
           'notification': {
             controller: 'NotificationsCtrl',
@@ -32,7 +44,7 @@
             controllerAs: 'vm',
             templateUrl: 'views/teams-teamfind.html',
             resolve: {
-               teams: teamsPrepService
+              teams: teamsPrepService
             }
           }
         }
@@ -56,10 +68,10 @@
         templateUrl: 'views/teams-teamedit.html',
         controller: 'TeamEditCtrl',
         controllerAs: 'vm',
-         resolve: {
-           technologies: techPrepService,
-           myteam: myTeam
-         },
+        resolve: {
+          technologies: techPrepService,
+          myteam: myTeam
+        },
         data: {
           permissions: {
             only: ['leader']
@@ -78,7 +90,7 @@
         data: {
           permissions: {
             except: ['anonymous'],
-            redirectTo: ['login']
+            redirectTo: 'login'
           }
         }
       });
@@ -89,7 +101,7 @@
           return response.data;
         });
     }
-    
+
     function myTeam(authservice, teamservice) {
       var tid = authservice.info()
           .then(function(response) {

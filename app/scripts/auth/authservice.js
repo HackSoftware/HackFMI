@@ -76,12 +76,12 @@
     }
 
     function failed(error, status) {
-        var finalError = [];
-        for (var er in error) {
-          finalError.push(error[er][0]);      
-        }
-        errorservice.setError(finalError);
-        return error;
-    };  
+      var finalError = [];
+      for (var er in error) {
+        finalError.push(error[er][0]);
+      }
+      errorservice.setError(finalError);
+      return error;
+    };
   }
 })();

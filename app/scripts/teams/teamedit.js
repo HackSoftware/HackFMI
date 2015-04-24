@@ -1,10 +1,10 @@
 (function() {
   'use strict';
-  
+
   angular
     .module('hackfmiApp.teams')
     .controller('TeamEditCtrl', TeamEditCtrl);
-  
+
   function TeamEditCtrl($state, technologies, myteam, teamservice, navbar) {
     var vm = this;
 

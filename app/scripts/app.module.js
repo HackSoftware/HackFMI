@@ -3,11 +3,7 @@
 
   angular
     .module('hackfmiApp', [
-      // 'ngAnimate',
-      // 'ngCookies',
-      // 'ngResource',
       'ngSanitize',
-      // 'ngTouch',
       'ui.router',
       'checklist-model',
       'hackfmiApp.mentors',
@@ -30,16 +26,16 @@
       Permission.defineRole('leader', function (stateParams) {
         if(localStorage.length > 0) {
           return authservice.info()
-          .then(function (response) {
-            if (response.data.teammembership_set.length == 0) {
-              return false;
-            }
+            .then(function (response) {
+              if (response.data.teammembership_set.length == 0) {
+                return false;
+              }
 
-            if (response.data.teammembership_set[0].is_leader === true) {
-              return true;
-            }
-            return false;
-          });
+              if (response.data.teammembership_set[0].is_leader === true) {
+                return true;
+              }
+              return false;
+            });
         }
         return false;
       });

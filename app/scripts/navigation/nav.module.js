@@ -1,8 +1,9 @@
 (function() {
   'use strict';
-  
-  angular.module('hackfmiApp.nav', [
-    'ngSanitize',
-    'permission'
-  ]);
+
+  angular
+    .module('hackfmiApp.nav', [
+      'ngSanitize',
+      'permission'
+    ]);
 })();

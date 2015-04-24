@@ -6,10 +6,9 @@
     .controller('ShowMentorsCtrl', ShowMentors);
 
   function ShowMentors($sce, mentorservice, mentors, navbar, authservice) {
-    /*jshint validthis: true */
     var vm = this;
     if(localStorage.length === 0) {
-      vm.menu = navbar.anonymous();      
+      vm.menu = navbar.anonymous();
     }
     else {
       authservice.info()

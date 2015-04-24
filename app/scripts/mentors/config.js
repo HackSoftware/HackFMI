@@ -1,12 +1,10 @@
 (function() {
   'use strict';
 
-  var mentors = angular.module('hackfmiApp.mentors');
+  angular
+    .module('hackfmiApp.mentors')
+    .config(configure);
 
-
-  mentors.config(configure);
-
-  /* @ngInject */
   function configure ($stateProvider) {
     $stateProvider
       .state('showmentors', {
@@ -51,13 +49,13 @@
 
   function myTeam(authservice, teamservice) {
     return authservice.info()
-    .then(function(response) {
+      .then(function(response) {
         var tid = response.data.teammembership_set[0].team;
         return teamservice.getMyTeam(tid)
-        .then(function(response) {
-          return response.data[0];
-        });
-    });
+          .then(function(response) {
+            return response.data[0];
+          });
+      });
   };
 
 })();

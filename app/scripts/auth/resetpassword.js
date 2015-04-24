@@ -9,11 +9,10 @@
     var vm = this;
     vm.lostPassword = lostPassword;
     vm.userData = {};
-    
+
     function lostPassword() {
       return authservice.resetPassword(vm.userData)
         .success(function(data) {
-          console.log(data);
           $state.go('resetpassword-success');
         });
     }

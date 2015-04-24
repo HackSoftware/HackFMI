@@ -1,10 +1,10 @@
 (function() {
   'use strict';
-  
+
   angular
     .module('hackfmiApp.teams')
     .controller('NotificationsCtrl', NotificationsCtrl);
-  
+
   function NotificationsCtrl(invs, invitations, $state) {
     var nm = this;
     nm.invs = invs;

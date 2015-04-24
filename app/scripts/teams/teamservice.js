@@ -22,7 +22,7 @@
     return service;
 
     function getTeams() {
-       var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
+      var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
       return $http.get(DATA_URL + 'teams/', options)
         .success(complete)
         .error(failed);
@@ -47,7 +47,7 @@
         return member.teammembership_set[0].is_leader;
       })[0];
     }
-    
+
     function concatenate(array) {
       var names = array.map(function(elem){
         return elem.name;
@@ -66,7 +66,7 @@
     };
 
     function leaveTeam() {
-       var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
+      var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
       var data = {};
       return $http.post(DATA_URL + 'leave_team/', data, options)
         .success(complete)

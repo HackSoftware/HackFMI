@@ -1,9 +1,10 @@
 (function() {
   'use strict';
 
-  angular.module('hackfmiApp.core', [
-    'ui.router',
-    'hackfmiApp.auth',
-    'permission'
-  ]);
+  angular
+    .module('hackfmiApp.core', [
+      'ui.router',
+      'hackfmiApp.auth',
+      'permission'
+    ]);
 })();

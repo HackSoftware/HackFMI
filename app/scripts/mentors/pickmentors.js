@@ -6,7 +6,6 @@
     .controller('PickMentorsCtrl', PickMentors);
 
   function PickMentors($q, $sce, mentorservice, teamservice, mentors, myTeam) {
-    /*jshint validthis: true */
     var vm = this;
     vm.team = myTeam;
 
@@ -15,7 +14,6 @@
       return obj;
     });
 
-    // console.log(myTeamId);
     vm.addMentor = function(mentorId) {
       mentorservice.pickMentor(mentorId);
       vm.team.mentors.push(mentorId);

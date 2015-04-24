@@ -1,13 +1,13 @@
 (function() {
   'use strict';
-  
+
   angular
     .module('hackfmiApp.teams')
     .controller('TeamNavCtrl', TeamNavCtrl);
-  
+
   function TeamNavCtrl(me, navbar) {
     var vm = this;
-    
+
     vm.me = me;
     if(me.teammembership_set.length == 0) {
       vm.menu = navbar.notinteam();

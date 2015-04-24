@@ -1,10 +1,10 @@
 (function() {
   'use strict';
-  
+
   angular
     .module('hackfmiApp.invitations')
     .factory('invitations', invitations);
-  
+
   function invitations($http, DATA_URL, authservice) {
     var service = {
       sendInvite: sendInvite,
@@ -12,10 +12,9 @@
       accept: accept,
       decline: decline
     };
-    
+
     return service;
-    
-    //def service methods here
+
     function sendInvite(data) {
       var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
       return $http.post(DATA_URL + 'invitation/', data, options)
@@ -23,7 +22,7 @@
         .error(fail);
     }
     function getInvites() {
-       var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
+      var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
       return $http.get(DATA_URL + 'invitation/', options)
         .success(complete)
         .error(fail);
@@ -41,11 +40,11 @@
                          );
     }
   }
-  
+
   function complete(data) {
     return data;
   }
-  
+
   function fail(error) {
     return error;
   }

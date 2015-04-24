@@ -15,10 +15,8 @@
     function login() {
       return authservice.login(vm.user)
         .then(function(response) {
-          console.log(errorservice);
           localStorage.setItem('token', response.data.auth_token);
           $state.go('teamfind.notification');
-          console.log(localStorage);
         });
     }
   }

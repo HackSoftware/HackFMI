@@ -1,5 +1,5 @@
-angular.module('hackfmiApp.nav')
-
+angular
+  .module('hackfmiApp.nav')
   .directive('angledNavbar',[function(){
     return {
       restrict : 'AE',
@@ -13,7 +13,7 @@ angular.module('hackfmiApp.nav')
  	$scope.defaults = {
  	  menus : []
  	};
-        
+
  	if(angular.isUndefined($attrs.navfn)){
  	  $scope.navfn = function(action){
  	    if(angular.isObject(action))
@@ -25,10 +25,10 @@ angular.module('hackfmiApp.nav')
  	$scope.navAction = function(action){
  	  $scope.navfn({'action' : action});
  	};
-        
+
  	$scope.hasMenus = function(){
  	  return (angular.isDefined($attrs.menus));
  	};
-      }          
+      }
     };
   }]);
