@@ -11,7 +11,8 @@
     var service = {
       getMentors: getMentors,
       pickMentor: pickMentor,
-      unpickMentor: unpickMentor
+      unpickMentor: unpickMentor,
+      mentorsSchedule: mentorsSchedule
     };
 
     return service;
@@ -28,6 +29,14 @@
       function getMentorsFailed(error) {
         return error;
       }
+    }
+
+    function mentorsSchedule() {
+      return $http.get(DATA_URL + 'schedule/')
+        .then(function(response) {
+          console.log(response.data);
+          return response.data;
+        });
     }
 
     function pickMentor(mentorId) {

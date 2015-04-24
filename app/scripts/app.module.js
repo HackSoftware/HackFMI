@@ -4,6 +4,7 @@
   angular
     .module('hackfmiApp', [
       'ngSanitize',
+      'ngAnimate',
       'ui.router',
       'checklist-model',
       'hackfmiApp.mentors',
