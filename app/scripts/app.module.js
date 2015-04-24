@@ -14,6 +14,9 @@
       'hackfmiApp.invitations',
       'permission'
     ])
+    .config(function ($urlRouterProvider) {
+      $urlRouterProvider.otherwise('/');
+    })
     .run(function (Permission, authservice) {
 
       Permission.defineRole('anonymous', function (stateParams) {
