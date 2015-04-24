@@ -102,16 +102,16 @@
         });
     }
 
-    function myTeam(authservice, teamservice) {
-      var tid = authservice.info()
+  function myTeam(authservice, teamservice) {
+    return authservice.info()
+      .then(function(response) {
+        var tid = response.data.teammembership_set[0].team;
+        return teamservice.getMyTeam(tid)
           .then(function(response) {
-            return response.data.team_set[0];
+            return response.data[0];
           });
-      return teamservice.getMyTeam(tid)
-        .then(function(response) {
-          return response.data[0];
-        });
-    };
+      });
+  };
 
     function teamsPrepService(teamservice) {
       return teamservice.getTeams();
