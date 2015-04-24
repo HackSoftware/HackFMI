@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module()
+    .module('hackfmiApp.invitations')
     .config(configure);
 
   function configure() {

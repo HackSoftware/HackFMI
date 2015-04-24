@@ -4,6 +4,7 @@
   angular
     .module('hackfmiApp.nav', [
       'ngSanitize',
+      'ui.router',
       'permission'
     ]);
 })();

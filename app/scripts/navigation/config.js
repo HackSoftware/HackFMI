@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module()
+    .module('hackfmiApp.nav')
     .config(configure);
 
   function configure() {

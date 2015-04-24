@@ -3,6 +3,7 @@
 
   angular
     .module('hackfmiApp.mentors', [
-      'permission'
+      'permission',
+      'ui.router'
     ]);
 })();
