@@ -45,6 +45,7 @@
           return authservice.info()
             .then(function (data) {
               if (data.data.teammembership_set.length == 0) {
+                console.log('notinteam');
                 return true;
               }
               return false;
@@ -57,7 +58,7 @@
         if(localStorage.length > 0) {
           return authservice.info()
             .then(function (data) {
-              if (data.data.teammembership_set) {
+              if (data.data.teammembership_set.length > 0) {
                 return true;
               }
               return false;
