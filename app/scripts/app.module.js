@@ -35,7 +35,6 @@
               }
 
               if (response.data.teammembership_set[0].is_leader === true) {
-                console.log('leader');
                 return true;
               }
               return false;
@@ -49,7 +48,6 @@
           return authservice.info()
             .then(function (data) {
               if (data.data.teammembership_set.length == 0) {
-                console.log('notinteam');
                 return true;
               }
               return false;
@@ -63,7 +61,6 @@
           return authservice.info()
             .then(function (data) {
               if (data.data.teammembership_set.length > 0) {
-                console.log(inteam);
                 return true;
               }
               return false;
@@ -71,6 +68,5 @@
         }
         return false;
       });
-
     });
 })();
