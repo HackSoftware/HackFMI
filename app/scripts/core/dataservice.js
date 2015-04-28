@@ -7,25 +7,25 @@
 
   /* @ngInject */
   function dataservice($http, $location, DATA_URL) {
-
     var service = {
-      getSkills: getSkills
+      getSkills: getSkills,
+      getSeason: getSeason
     };
 
     return service;
 
     function getSkills() {
       return $http.get(DATA_URL + 'skills/')
-        .then(getSkillsComplete)
-        .catch(getSkillsFailed);
+        .then(complete);
+    }
 
-      function getSkillsComplete(response) {
-        return response.data;
-      }
+    function getSeason() {
+      return $http.get(DATA_URL + 'season/')
+        .success(complete);
+    }
 
-      function getSkillsFailed(error) {
-        return error;
-      }
+    function complete(response) {
+      return response.data;
     }
   }
 })();

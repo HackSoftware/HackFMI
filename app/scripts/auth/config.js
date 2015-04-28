@@ -11,19 +11,6 @@
   /* @ngInject */
   function configure($stateProvider) {
     $stateProvider
-      .state('home', {
-        url: '/',
-        templateUrl: 'views/auth-main.html',
-        controller: function($scope, navbar) {
-          $scope.menu = navbar.anonymous();
-        },
-        data: {
-          permissions: {
-            only: ['anonymous'],
-            redirectTo: 'teamfind.notification'
-          }
-        }
-      })
       .state('register', {
         url: '/register',
         templateUrl: 'views/auth-register.html',
