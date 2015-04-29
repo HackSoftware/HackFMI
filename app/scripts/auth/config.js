@@ -4,33 +4,20 @@
   angular
     .module('hackfmiApp.auth')
     .config(configure);
-  //console.log(angular.module('hackfmiApp.auth'));
 
   configure.$inject = ['$stateProvider'];
 
   /* @ngInject */
   function configure($stateProvider) {
     $stateProvider
-      .state('home', {
-        url: '/',
-        templateUrl: 'views/auth-main.html',
-        controller: function($scope, navbar) {
-          $scope.menu = navbar.anonymous();
-        },
-        data: {
-          permissions: {
-            only: ['anonymous'],
-            redirectTo: 'teamfind.notification'
-          }
-        }
-      })
       .state('register', {
         url: '/register',
         templateUrl: 'views/auth-register.html',
         controller: 'RegisterCtrl',
         controllerAs: 'vm',
         resolve: {
-          skills: skillsPrepService
+          skills: skillsPrepService,
+          season: seasonPrep
         },
         data: {
           permissions: {
@@ -105,6 +92,12 @@
             redirectTo: 'login'
           }
         }
+      });
+  }
+  function seasonPrep(dataservice) {
+    return dataservice.getSeason()
+      .then(function(response) {
+        return response.data[0];
       });
   }
   function skillsPrepService(dataservice) {

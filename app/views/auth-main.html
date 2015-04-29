@@ -1,20 +1,2 @@
-<angled-navbar menus="menu"></angled-navbar>
-<p>
-  <img src="images/hackfmi5.png" width="100%";>
-<p>
-  <p><a href="http://data.hackbulgaria.com/media/mentors.html">График за всички ментори</a></p>
-  Това е системата, през която ще протече HackFMI 5. През нея става записването за участие и сформирането на отбор.
-</p>
-<p>
-  За целта, трябва да направиш следните стъпки:
-
-  <ol>
-    <li><a ui-sref="register">Регистрирай се</a> и повтърди по email. Маркирай технологиите, с които си запознат, защото това е важно.</li>
-    <li>Направи свой отбор или се присъедини към вече съществуващ такъв.</li>
-    <li>В системата има списък с отбори, като може да видиш email-a само на лидера на отбора.</li>
-    <li>Присъединяването към отбор се случва чрез покана, за която е нужна email-a на участника.</li>
-  </ol>
-
-  <h3>Ако нещо се счупи: пиши на support@hackfmi.com</h3>
-</p>
-</p>
+<angled-navbar menus="vm.menu"></angled-navbar>
+<div ng-bind-html="vm.season.front_page | unsafe"></div>

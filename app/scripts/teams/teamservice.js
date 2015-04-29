@@ -45,7 +45,7 @@
 
     function leader(members) {
       return members.filter(function(member) {
-        return member.teammembership_set[0].is_leader;
+        return member.teammembership_set[member.teammembership_set.length - 1].is_leader;
       })[0];
     }
 

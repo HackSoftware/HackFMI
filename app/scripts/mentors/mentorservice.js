@@ -6,7 +6,7 @@
     .factory('mentorservice', mentorservice);
 
   /* @ngInject */
-  function mentorservice($http, $location, $q, DATA_URL) {
+  function mentorservice($http, DATA_URL) {
 
     var service = {
       getMentors: getMentors,

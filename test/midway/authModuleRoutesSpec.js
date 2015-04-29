@@ -61,7 +61,7 @@ describe("Midway: Testing Routes", function() {
         expect(state.href('register')).to.equal('#/register');
       });
 
-      it("should load RegisterCtrl when properly when /register route is accessed", function() {
+      it("should load RegisterCtrl properly when /register route is accessed", function() {
         //todo
       });
     });
