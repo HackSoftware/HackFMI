@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "dependencies": {
     "mocha": "~2.2.4",
-    "chai": "~2.2.0"
+    "chai": "~2.2.0",
+    "protractor": "~2.0.0"
   },
   "repository": {},
   "devDependencies": {

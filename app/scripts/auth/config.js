@@ -4,7 +4,6 @@
   angular
     .module('hackfmiApp.auth')
     .config(configure);
-  //console.log(angular.module('hackfmiApp.auth'));
 
   configure.$inject = ['$stateProvider'];
 
@@ -17,7 +16,8 @@
         controller: 'RegisterCtrl',
         controllerAs: 'vm',
         resolve: {
-          skills: skillsPrepService
+          skills: skillsPrepService,
+          season: seasonPrep
         },
         data: {
           permissions: {
@@ -92,6 +92,12 @@
             redirectTo: 'login'
           }
         }
+      });
+  }
+  function seasonPrep(dataservice) {
+    return dataservice.getSeason()
+      .then(function(response) {
+        return response.data[0];
       });
   }
   function skillsPrepService(dataservice) {

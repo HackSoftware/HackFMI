@@ -100,6 +100,7 @@
     function meInfo(authservice) {
       return authservice.info()
         .then(function(response) {
+          console.log(response.data);
           return response.data;
         });
     }
@@ -107,9 +108,11 @@
     function myTeam(authservice, teamservice) {
       return authservice.info()
         .then(function(response) {
-          var tid = response.data.teammembership_set[0].team;
+         
+          var tid = response.data.teammembership_set[response.data.teammembership_set.length - 1].team;
           return teamservice.getMyTeam(tid)
             .then(function(response) {
+              console.log(response.data);
               return response.data[0];
             });
         });

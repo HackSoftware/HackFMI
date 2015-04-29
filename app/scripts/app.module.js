@@ -15,10 +15,17 @@
       'hackfmiApp.invitations',
       'permission'
     ])
+    .value('seasonData', {
+      number: null,
+      min_team_members_count: null,
+      max_team_members_count: null
+    })
     .config(function ($urlRouterProvider) {
       $urlRouterProvider.otherwise('/');
     })
-    .run(function (Permission, authservice) {
+    .run(function (Permission, authservice, teamservice) {
+
+      
 
       Permission.defineRole('anonymous', function (stateParams) {
         if (localStorage.length == 0) {
@@ -35,7 +42,7 @@
                 return false;
               }
 
-              if (response.data.teammembership_set[0].is_leader === true) {
+              if (response.data.teammembership_set[response.data.teammembership_set.length - 1].is_leader === true) {
                 return true;
               }
               return false;
@@ -47,8 +54,8 @@
       Permission.defineRole('notinteam', function (stateParams) {
         if(localStorage.length > 0) {
           return authservice.info()
-            .then(function (data) {
-              if (data.data.teammembership_set.length == 0) {
+            .then(function (response) {
+              if (response.data.teammembership_set.length == 0) {
                 return true;
               }
               return false;
@@ -60,8 +67,8 @@
       Permission.defineRole('inteam', function (stateParams) {
         if(localStorage.length > 0) {
           return authservice.info()
-            .then(function (data) {
-              if (data.data.teammembership_set.length > 0) {
+            .then(function (response) {
+              if (response.data.teammembership_set.length > 0) {
                 return true;
               }
               return false;

@@ -3,7 +3,7 @@
 
   angular
     .module('hackfmiApp.core')
-    .constant("DATA_URL", "http://localhost:8000/hackfmi/api/")
+    .constant("DATA_URL", "http://data.hackbulgaria.com/hackfmi/api/")
     .filter('unsafe', function($sce) { return $sce.trustAsHtml; })
     .config(configure);
 
@@ -32,6 +32,7 @@
     function getSeasonPrep(dataservice) {
       return dataservice.getSeason()
         .then(function(response) {
+          console.log(response.data[0]);
           return response.data[0];
         });
     }

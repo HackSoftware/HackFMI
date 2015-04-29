@@ -5,14 +5,14 @@
     .module('hackfmiApp.invitations')
     .factory('invitations', invitations);
 
-  function invitations($http, DATA_URL, authservice) {
+  function invitations($http, DATA_URL, authservice, lil) {
     var service = {
       sendInvite: sendInvite,
       getInvites: getInvites,
       accept: accept,
       decline: decline
     };
-
+    
     return service;
 
     function sendInvite(data) {
