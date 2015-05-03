@@ -6,6 +6,7 @@
       'ui.router',
       'checklist-model',
       'hackfmiApp.nav',
+      'hackfmiApp.core',
       'permission'
     ]);
 })();

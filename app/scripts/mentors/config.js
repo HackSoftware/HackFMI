@@ -38,7 +38,20 @@
           }
         }
       });
+      // .state('mentorsSchedule', {
+      //   url: '/schedule',
+      //   templateUrl: 'views/mentors-placement.html',
+      //   controller: 'MentorsScheduleCtrl',
+      //   controllerAs: 'vm',
+      //   resolve: {
+      //     schedule: schedulePre
+      //   }
+      // });
   }
+
+  function schedulePre(mentorservice) {
+    return mentorservice.mentorsSchedule();
+  };
 
   function mentorsPrepService(mentorservice) {
     return mentorservice.getMentors()

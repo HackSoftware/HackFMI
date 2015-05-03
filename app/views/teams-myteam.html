@@ -2,7 +2,7 @@
 <div class="card card-container" id="register-form">
   <button class="btn btn-danger" ng-click="vm.leave()" style="float:right;" data-toggle="confirmation">Напусни отбора!</button>
 
-  <a ui-sref="teamedit" ng-show="vm.me.teammembership_set[0].is_leader">
+  <a ui-sref="teamedit" ng-show="vm.me.teammembership_set[vm.me.teammembership_set.length - 1].is_leader">
     <button class="btn btn-success">Промени отбора</button>
   </a>
 

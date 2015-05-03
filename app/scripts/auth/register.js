@@ -5,20 +5,24 @@
     .module('hackfmiApp.auth')
     .controller('RegisterCtrl', Register);
 
-  //Register.$inject = ['skills', 'status','authservice', 'errorservice', '$state'];
-
-  function Register(skills, authservice, errorservice, navbar, $state) {
+  function Register(skills, season, authservice, errorservice, navbar, $state) {
     /*jshint validthis: true */
     var vm = this;
 
     vm.smenu = navbar.anonymous();
 
     vm.skills = skills;
+    vm.season = season;
+    console.log(vm.season);
     vm.register = register;
     vm.selectedSkills = selectedSkills;
     vm.user = {};
     vm.user.known_skills = [];
     vm.errorService = errorservice;
+    var now = new Date();
+    vm.regEnd = new Date(vm.season.sign_up_deadline);
+    console.log(vm.regEnd);
+    console.log(now);
 
     function register(isFormValid) {
       var fullName = authservice.splitName(vm.user.name);
