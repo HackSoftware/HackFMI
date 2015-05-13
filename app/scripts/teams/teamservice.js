@@ -79,6 +79,7 @@
     };
 
     function complete(response) {
+      console.log(response);
       return transformData(response);
     }
 

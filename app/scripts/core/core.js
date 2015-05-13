@@ -14,9 +14,7 @@
     activate();
     
     function activate() {
-      seasonData.number = season.number,
-      seasonData.min_team_members_count = season.min_team_members_count,
-      seasonData.max_team_members_count = season.max_team_members_count
+      
     };
   };
 })();
