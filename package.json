@@ -2,9 +2,7 @@
   "name": "hackfmi",
   "version": "0.0.0",
   "dependencies": {
-    "mocha": "~2.2.4",
-    "chai": "~2.2.0",
-    "protractor": "~2.0.0"
+
   },
   "repository": {},
   "devDependencies": {
@@ -33,11 +31,18 @@
     "jasmine-core": "^2.2.0",
     "jshint-stylish": "^1.0.0",
     "karma": "^0.12.31",
-    "karma-jasmine": "^0.3.5",
     "karma-phantomjs-launcher": "^0.1.4",
     "load-grunt-tasks": "^3.1.0",
     "time-grunt": "^1.0.0",
-    "karma-chrome-launcher": "~0.1.8"
+    "karma-chrome-launcher": "~0.1.8",
+    "mocha": "~2.2.4",
+    "chai": "~2.2.0",
+    "protractor": "~2.0.0",
+    "karma-phantomjs-launcher": "~0.1.4",
+    "karma-mocha-reporter": "~1.0.2",
+    "karma-sinon-chai": "~0.3.0",
+    "karma-chai": "~0.1.0",
+    "karma-sinon": "~1.0.4"
   },
   "engines": {
     "node": ">=0.10.0"

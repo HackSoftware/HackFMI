@@ -13,16 +13,19 @@
 
     vm.skills = skills;
     vm.season = season;
-    console.log(vm.season);
     vm.register = register;
     vm.selectedSkills = selectedSkills;
     vm.user = {};
     vm.user.known_skills = [];
     vm.errorService = errorservice;
+    
     var now = new Date();
     vm.regEnd = new Date(vm.season.sign_up_deadline);
-    console.log(vm.regEnd);
-    console.log(now);
+    vm.canRegister = true;
+    
+    if(now >= vm.regEnd) {
+      vm.canRegister = false;
+    }
 
     function register(isFormValid) {
       var fullName = authservice.splitName(vm.user.name);
