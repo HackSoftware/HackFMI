@@ -1,6 +1,6 @@
 <div class="card card-container" id="register-form">
   <div class="alert alert-warning" role="alert">Това са всички регистрирани отбори, който си търсят екип. Ако нечия идея ти се струва интересна и мислиш, че можеш да им помогнеш, <strong>пиши email на създателя</strong> за да те добави в екипа.</div>
-  <div ng-repeat="team in vm.teams track by team.id">
+  <div ng-repeat="team in vm.teams">
     <h3>
       {{team.name}} - ({{team.members.length}}/6)
     </h3>
@@ -15,7 +15,7 @@
     </p>
     <p>
       <span ng-show="team.need_more_members" class="label label-success">Отбора търси още хора за екип</span>
-      <span ng-hide="team.need_more_members"class="label label-warning">Отбора не търси повече хора</span>
+      <span ng-hide="team.need_more_members" class="label label-warning">Отбора не търси повече хора</span>
     </p>
     <div ng-show="team.need_more_members">
       {{team.members_needed_desc}}

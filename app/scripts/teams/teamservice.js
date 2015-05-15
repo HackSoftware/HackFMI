@@ -36,6 +36,7 @@
     }
 
     function transformData(teams) {
+      console.log(teams);
       return teams.map(function(team) {
         team.techNames = concatenate(team.technologies_full);
         team.leader = leader(team.members);
@@ -45,7 +46,7 @@
 
     function leader(members) {
       return members.filter(function(member) {
-        return member.teammembership_set[member.teammembership_set.length - 1].is_leader;
+        return member.teammembership_set[0].is_leader == true;
       })[0];
     }
 

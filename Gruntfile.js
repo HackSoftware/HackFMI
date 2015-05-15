@@ -420,7 +420,13 @@ module.exports = function (grunt) {
     karma: {
       unit: {
         configFile: 'test/karma.conf.js',
-        singleRun: true
+        singleRun: true,
+        autoWatch: false
+      },
+      server: {
+        configFile: 'test/karma.conf.js',
+        singleRun: false,
+        autoWatch: true
       }
     }
   });
