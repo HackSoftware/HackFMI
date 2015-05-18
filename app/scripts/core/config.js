@@ -32,7 +32,6 @@
     function getSeasonPrep(dataservice) {
       return dataservice.getSeason()
         .then(function(response) {
-          console.log(response.data[0]);
           return response.data[0];
         });
     }

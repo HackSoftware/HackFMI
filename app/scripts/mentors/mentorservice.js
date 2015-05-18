@@ -34,7 +34,6 @@
     function mentorsSchedule() {
       return $http.get(DATA_URL + 'schedule/')
         .then(function(response) {
-          console.log(response.data);
           return response.data;
         });
     }

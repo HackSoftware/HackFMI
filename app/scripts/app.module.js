@@ -42,7 +42,7 @@
                 return false;
               }
 
-              if (response.data.teammembership_set[response.data.teammembership_set.length - 1].is_leader === true) {
+              if (response.data.teammembership_set[0].is_leader === true) {
                 return true;
               }
               return false;

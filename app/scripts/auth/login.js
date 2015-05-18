@@ -11,7 +11,6 @@
     vm.login = login;
     vm.user = {};
     vm.smenu = navbar.anonymous();
-    console.log(seasonData.number);
 
     function login() {
       return authservice.login(vm.user)

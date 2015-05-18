@@ -100,7 +100,6 @@
     function meInfo(authservice) {
       return authservice.info()
         .then(function(response) {
-          console.log(response.data);
           return response.data;
         });
     }
@@ -112,23 +111,26 @@
           var tid = response.data.teammembership_set[response.data.teammembership_set.length - 1].team;
           return teamservice.getMyTeam(tid)
             .then(function(response) {
-              console.log(response.data);
               return response.data[0];
             });
         });
     };
+
     function teamsPublicService(teamservice) {
       return teamservice.getTeamsPublic()
         .then(function(response) {
           return response.data;
         });
     }
+
     function teamsPrepService(teamservice) {
       return teamservice.getTeams();
     }
+
     function techPrepService(dataservice) {
       return dataservice.getSkills();
     }
+
     function invitationsPrepS(invitations) {
       return invitations.getInvites()
         .then(function(response) {

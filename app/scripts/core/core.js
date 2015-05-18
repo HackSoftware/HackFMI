@@ -9,7 +9,6 @@
     var vm = this;
     vm.menu = navbar.anonymous();
     vm.season = season;
-    console.log(vm.season);
     
     activate();
     

@@ -10,7 +10,6 @@
     
     vm.html = $sce.trustAsHtml(schedule);
     
-    console.log(vm.html);
     activate();
     
     function activate() {
