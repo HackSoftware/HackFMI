@@ -3,13 +3,9 @@
 
   angular
     .module('hackfmiApp.core')
-    .constant("DATA_URL", "http://localhost:8000/hackfmi/api/")
+    .constant("DATA_URL", "http://data.hackbulgaria.com/hackfmi/api/")
     .filter('unsafe', function($sce) { return $sce.trustAsHtml; })
     .config(configure);
-
-  // function setSeason(dataservice) {
-  //   return dataservice.getSeason();
-  // };
   
   function configure($stateProvider) {
     $stateProvider
