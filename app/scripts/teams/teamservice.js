@@ -36,7 +36,6 @@
     }
 
     function transformData(teams) {
-      console.log(teams);
       return teams.map(function(team) {
         team.techNames = concatenate(team.technologies_full);
         team.leader = leader(team.members);
@@ -80,7 +79,6 @@
     };
 
     function complete(response) {
-      console.log(response);
       return transformData(response);
     }
 

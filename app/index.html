@@ -20,6 +20,9 @@
         <![endif]-->
 
     <div class="container">
+      <div ng-controller="seasonCtrl as vm">
+        <h2>{{vm.season.number}} - {{vm.season.topic}}</h2>
+      </div>
       <div ui-view></div>
     </div>
 
@@ -62,8 +65,10 @@
     <script src="scripts/core/config.js"></script>
     <script src="scripts/core/dataservice.js"></script>
     <script src="scripts/core/errorservice.js"></script>
+    <script src="scripts/core/season.js"></script>
     <script src="scripts/core/core.js"></script>
 
+    
     <script src="scripts/auth/auth.module.js"></script>
     <script src="scripts/auth/config.js"></script>
     <script src="scripts/auth/register.js"></script>
