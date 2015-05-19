@@ -33,7 +33,6 @@
       var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
       return $http.post(DATA_URL + 'teams/', data, options)
         .success(function(data) {
-          console.log(data);
         })
         .error(failed);
     }

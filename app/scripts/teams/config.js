@@ -107,7 +107,6 @@
     function myTeam(authservice, teamservice) {
       return authservice.info()
         .then(function(response) {
-          console.log(response.data);
           var id = response.data.teammembership_set[0].team;
           return id;
         })
