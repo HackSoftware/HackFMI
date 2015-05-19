@@ -3,10 +3,10 @@
 
   angular
     .module('hackfmiApp.core')
-    .constant("DATA_URL", "http://data.hackbulgaria.com/hackfmi/api/")
+    .constant("DATA_URL", "https://data.hackbulgaria.com/hackfmi/api/")
     .filter('unsafe', function($sce) { return $sce.trustAsHtml; })
     .config(configure);
-  
+
   function configure($stateProvider) {
     $stateProvider
       .state('home', {
