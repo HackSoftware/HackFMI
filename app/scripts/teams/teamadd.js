@@ -16,8 +16,10 @@
     vm.menu = navbar.notinteam();
 
     function addTeam() {
-      teamservice.registerTeam(vm.team);
-      $state.go('myteam');
+      teamservice.registerTeam(vm.team)
+        .then(function(response) {
+          $state.go('myteam');
+        });
     }
 
     function selectedTechnologies(technologies) {

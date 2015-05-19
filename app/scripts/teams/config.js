@@ -107,9 +107,12 @@
     function myTeam(authservice, teamservice) {
       return authservice.info()
         .then(function(response) {
-         
-          var tid = response.data.teammembership_set[response.data.teammembership_set.length - 1].team;
-          return teamservice.getMyTeam(tid)
+          console.log(response.data);
+          var id = response.data.teammembership_set[0].team;
+          return id;
+        })
+        .then(function(id) {
+          return teamservice.getMyTeam(id)
             .then(function(response) {
               return response.data[0];
             });

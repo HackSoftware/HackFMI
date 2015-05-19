@@ -30,13 +30,16 @@
     };
 
     function registerTeam(data) {
-      return $http.post(DATA_URL + 'register_team/', data)
-        .success(complete)
+      var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
+      return $http.post(DATA_URL + 'teams/', data, options)
+        .success(function(data) {
+          console.log(data);
+        })
         .error(failed);
     }
 
     function transformData(teams) {
-      return teams.map(function(team) {
+       return teams.map(function(team) {
         team.techNames = concatenate(team.technologies_full);
         team.leader = leader(team.members);
         return team;

@@ -12,7 +12,8 @@
       getMentors: getMentors,
       pickMentor: pickMentor,
       unpickMentor: unpickMentor,
-      mentorsSchedule: mentorsSchedule
+      mentorsSchedule: mentorsSchedule,
+      getLeftovers: getLeftovers
     };
 
     return service;
@@ -35,30 +36,42 @@
       return $http.get(DATA_URL + 'schedule_json/')
         .then(function(response) {
           var ordered = scheduleOrder(angular.fromJson(response.data));
-          console.log(ordered);
-          return angular.fromJson(response.data);
+          var leftovers = angular.fromJson(response.data).leftovers;
+          var result = {
+            'tableData': ordered,
+            'leftovers': leftovers
+          };
+          return result;
         });
     }
 
-    function scheduleOrder(scheduleObj) {
-      var slots = [];
-      var mentors = [];
-      var result = scheduleObj.placed;
-      
-      for(var i in result) {
-        if(mentors.indexOf(i) === -1) {
-          mentors.push(i);
-        }
-        for(var s in result[i]) {
-          if(slots.indexOf(s) === -1) {
-            slots.push(s);
-          }
-        }
-      }
-      slots = slots.sort();
-      //console.log(slots);
-      //console.log(mentors);
+    function chosenMentors(result) {
+      var mentors = Object.keys(result);
+      return mentors;
+    }
 
+    function allSlots(result) {
+      var slots = [];
+
+      var mentors = chosenMentors(result);
+      mentors.forEach(function(mentor) {
+        var slotKeys = Object.keys(result[mentor]);
+        slotKeys.forEach(function(slot) {
+          if(slots.indexOf(slot) === -1) {
+            slots.push(slot);
+          }
+        });
+      });
+
+      slots.sort();
+      return slots;
+    }
+    
+    function scheduleOrder(scheduleObj) {
+      var result = scheduleObj.placed;
+      var slots = allSlots(result);
+      var mentors = chosenMentors(result);
+      
       var tableData = [];
       slots.forEach(function(slot) {
         var obj = {
@@ -75,8 +88,11 @@
         });
         tableData.push(obj);
       });
-      
-      return scheduleObj;
+      return tableData;
+    }
+
+    function getLeftovers(scheduleObj) {
+      return scheduleObj.leftovers;
     }
 
     function pickMentor(mentorId) {

@@ -10,6 +10,7 @@
     vm.leave = leave;
     vm.team = team;
     vm.me = me;
+
     vm.leader = teamservice.leader(vm.team.members);
     vm.techNames = teamservice.concatenate(vm.team.technologies_full);
 
