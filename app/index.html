@@ -8,6 +8,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/ng-table/dist/ng-table.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -20,6 +21,9 @@
         <![endif]-->
 
     <div class="container">
+      <!-- <div ng-controller="seasonCtrl as vm"> -->
+      <!--   <h2></h2> -->
+      <!-- </div> -->
       <div ui-view></div>
     </div>
 
@@ -54,6 +58,7 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/checklist-model/checklist-model.js"></script>
     <script src="bower_components/angular-permission/dist/angular-permission.js"></script>
+    <script src="bower_components/ng-table/dist/ng-table.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -62,8 +67,10 @@
     <script src="scripts/core/config.js"></script>
     <script src="scripts/core/dataservice.js"></script>
     <script src="scripts/core/errorservice.js"></script>
+    <script src="scripts/core/season.js"></script>
     <script src="scripts/core/core.js"></script>
 
+    
     <script src="scripts/auth/auth.module.js"></script>
     <script src="scripts/auth/config.js"></script>
     <script src="scripts/auth/register.js"></script>

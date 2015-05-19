@@ -13,7 +13,6 @@
     activate();
     
     function activate() {
-      console.log(vm.teams);
     };
   };
 })();

@@ -9,7 +9,7 @@
     /*jshint validthis: true */
     var vm = this;
     vm.teams = teams.data;
-
+    
     activate();
 
     function activate() {

@@ -7,10 +7,6 @@
     .filter('unsafe', function($sce) { return $sce.trustAsHtml; })
     .config(configure);
 
-  // function setSeason(dataservice) {
-  //   return dataservice.getSeason();
-  // };
-
   function configure($stateProvider) {
     $stateProvider
       .state('home', {
@@ -32,7 +28,6 @@
     function getSeasonPrep(dataservice) {
       return dataservice.getSeason()
         .then(function(response) {
-          console.log(response.data[0]);
           return response.data[0];
         });
     }
