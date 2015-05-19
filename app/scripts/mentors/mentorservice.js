@@ -32,10 +32,51 @@
     }
 
     function mentorsSchedule() {
-      return $http.get(DATA_URL + 'schedule/')
+      return $http.get(DATA_URL + 'schedule_json/')
         .then(function(response) {
-          return response.data;
+          var ordered = scheduleOrder(angular.fromJson(response.data));
+          console.log(ordered);
+          return angular.fromJson(response.data);
         });
+    }
+
+    function scheduleOrder(scheduleObj) {
+      var slots = [];
+      var mentors = [];
+      var result = scheduleObj.placed;
+      
+      for(var i in result) {
+        if(mentors.indexOf(i) === -1) {
+          mentors.push(i);
+        }
+        for(var s in result[i]) {
+          if(slots.indexOf(s) === -1) {
+            slots.push(s);
+          }
+        }
+      }
+      slots = slots.sort();
+      //console.log(slots);
+      //console.log(mentors);
+
+      var tableData = [];
+      slots.forEach(function(slot) {
+        var obj = {
+          'slot': slot
+        };
+
+        mentors.forEach(function(mentor) {
+          if(slot in result[mentor]){
+            obj[mentor] = result[mentor][slot];
+          }
+          else {
+            obj[mentor] = '-';
+          }
+        });
+        tableData.push(obj);
+      });
+      
+      return scheduleObj;
     }
 
     function pickMentor(mentorId) {

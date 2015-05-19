@@ -37,12 +37,14 @@
             redirectTo: 'showmentors'
           }
         }
+      })
+      .state('schedule', {
+        url: '/schedule',
+        templateUrl: 'views/mentors-schedule.html',
+        controller: 'scheduleCtrl',
+        controllerAs: 'vm'
       });
   }
-
-  function schedulePre(mentorservice) {
-    return mentorservice.mentorsSchedule();
-  };
 
   function mentorsPrepService(mentorservice) {
     return mentorservice.getMentors()

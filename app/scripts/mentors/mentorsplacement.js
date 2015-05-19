@@ -3,17 +3,16 @@
   
   angular
     .module('hackfmiApp.mentors')
-    .controller('MentorsScheduleCtrl', MentorsScheduleCtrl);
+    .controller('scheduleCtrl', scheduleCtrl);
   
-  function MentorsScheduleCtrl(schedule, $sce) {
+  function scheduleCtrl(mentorservice, navbar) {
     var vm = this;
+    vm.menu = navbar.anonymous();
     
-    vm.html = $sce.trustAsHtml(schedule);
-    
-    activate();
-    
-    function activate() {
-      
-    };
+    mentorservice.mentorsSchedule()
+      .then(function(response) {
+        vm.data = response.placed;
+        vm.leftovers = response.leftovers;
+      });
   };
 })();
