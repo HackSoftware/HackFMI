@@ -18,10 +18,6 @@
     function anonymous() {
       var menu = [
         {
-          title: 'График',
-          action: 'schedule'
-        },
-        {
           title: "Ментори",
           action: 'showmentors'
         },
