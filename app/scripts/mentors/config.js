@@ -29,7 +29,8 @@
         controllerAs: 'vm',
         resolve: {
           mentors: mentorsPrepService,
-          myTeam: myTeam
+          myTeam: myTeam,
+          canPickMentors: canPickPrep
         },
         data: {
           permissions: {
@@ -47,6 +48,23 @@
           dataFull: data
         }
       });
+  }
+
+  function canPickPrep(dataservice) {
+    return dataservice.getSeason()
+        .then(function(response) {
+          var now = new Date();
+          var mentorStart = new Date(response.data[0].mentor_pick_start_date);
+          var mentorEnd = new Date(response.data[0].mentor_pick_end_date);
+          mentorEnd.setDate(mentorEnd.getDate() + 1);
+          mentorStart.setDate(mentorStart.getDate() - 1);
+          if(mentorStart <= now && mentorEnd >= now) {
+            return true;
+          }
+          else {
+            return false;
+          }
+        });
   }
 
   function data(mentorservice) {

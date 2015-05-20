@@ -6,13 +6,15 @@
     <div class="row">
       <div class="col-sm-4 text-center">
         <img ng-src="{{ mentor.picture }}" alt="{{ mentor.name }}" class="thumbnail col-sm-12">
-        <button class="btn btn-primary" ng-click="vm.addMentor(mentor.id)" ng-show="vm.team.mentors.indexOf(mentor.id)==-1"  ng-disabled="vm.team.mentors.length >= 7">
-          Избери за ментор
-        </button>
+        <div ng-show="vm.canPick">
+          <button class="btn btn-primary" ng-click="vm.addMentor(mentor.id)" ng-show="vm.team.mentors.indexOf(mentor.id)==-1" ng-disabled="vm.team.mentors.length >= 7">
+            Избери за ментор
+          </button>
 
-        <button class="btn btn-danger" ng-click="vm.removeMentor(mentor.id)"  ng-show="vm.team.mentors.indexOf(mentor.id)!=-1">
-          Премахни от избрани
-        </button>
+          <button class="btn btn-danger" ng-click="vm.removeMentor(mentor.id)"  ng-show="vm.team.mentors.indexOf(mentor.id)!=-1">
+            Премахни от избрани
+          </button>
+        </div>
       </div>
       <p class="col-sm-8"  ng-bind-html="mentor.description"></p>
     </div>
