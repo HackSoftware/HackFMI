@@ -12,7 +12,6 @@
     dataservice.getSeason()
       .then(function(response) {
         vm.season = response.data[0];
-        console.log(vm.season);
       });
   };
 })();

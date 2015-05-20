@@ -4,6 +4,7 @@
   angular
     .module('hackfmiApp.mentors', [
       'permission',
-      'ui.router'
+      'ui.router',
+      'ngTable'
     ]);
 })();

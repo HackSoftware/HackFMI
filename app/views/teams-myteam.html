@@ -1,4 +1,9 @@
 <angled-navbar menus="vm.menu"></angled-navbar>
+
+  <div ng-controller="seasonCtrl as s">
+    <h2>{{s.season.name}} </h2>
+  </div>
+
 <div class="card card-container" id="register-form">
   <button class="btn btn-danger" ng-click="vm.leave()" style="float:right;" data-toggle="confirmation">Напусни отбора!</button>
 
