@@ -10,7 +10,6 @@
     vm.team = myTeam;
     vm.canPick = canPickMentors;
     vm.menu = navbar.leader();
- 
     
     vm.mentors = mentors.map(function(obj) {
       obj.description = $sce.trustAsHtml(obj.description);
@@ -18,13 +17,13 @@
     });
 
     vm.addMentor = function(mentorId) {
-      console.log(mentorId);
-      mentorservice.pickMentor(mentorId);
+      
+      mentorservice.pickMentor(mentorId, vm.team.id);
       vm.team.mentors.push(mentorId);
     };
 
     vm.removeMentor = function(mentorId) {
-      mentorservice.unpickMentor(mentorId);
+      mentorservice.unpickMentor(mentorId, vm.team.id);
       var index = vm.team.mentors.indexOf(mentorId);
       if (index > -1) {
         vm.team.mentors.splice(index, 1);
