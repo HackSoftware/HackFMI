@@ -42,10 +42,20 @@
         url: '/schedule',
         templateUrl: 'views/mentors-schedule.html',
         controller: 'scheduleCtrl',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: {
+          dataFull: data
+        }
       });
   }
 
+  function data(mentorservice) {
+    return mentorservice.mentorsSchedule()
+      .then(function(response) {
+        return response;
+      });
+  }
+  
   function mentorsPrepService(mentorservice) {
     return mentorservice.getMentors()
       .then(function(response) {
