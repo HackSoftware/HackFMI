@@ -107,6 +107,7 @@
       }
 
       function pickMentorFailed(error) {
+        console.log(error);
         return error;
       }
     }
