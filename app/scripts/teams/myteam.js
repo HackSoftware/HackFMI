@@ -5,7 +5,7 @@
     .module('hackfmiApp.teams')
     .controller('TeamCtrl', TeamCtrl);
 
-  function TeamCtrl($state, me, team, teamservice, navbar) {
+  function TeamCtrl($state, me, team, teamservice, navbar, invitations) {
     var vm = this;
     vm.leave = leave;
     vm.team = team;
@@ -19,6 +19,23 @@
     }
     else {
       vm.menu = navbar.inteam();
+    }
+
+    vm.error = {};
+    vm.success = {};
+    vm.submitForm = function(){
+      invitations.sendInvite(vm.user)
+        .success(function(data) {
+          console.log(data.message);
+          vm.success['message'] = data.message;
+          vm.success['show'] = true;
+          vm.error['show'] = false;
+        })
+        .error(function(data) {
+          vm.error['message'] = data.error;
+          vm.success['show'] = false;
+          vm.error['show'] = true;
+        })
     }
 
     function leave() {
