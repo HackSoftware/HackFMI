@@ -57,13 +57,16 @@
       mentors.forEach(function(mentor) {
         var slotKeys = Object.keys(result[mentor]);
         slotKeys.forEach(function(slot) {
-          if(slots.indexOf(slot) === -1) {
-            slots.push(slot);
+          var slotNumber = slot.substring(1);
+          if(slots.indexOf(slotNumber) === -1) {
+            slots.push(slotNumber);
           }
         });
       });
-
-      slots.sort();
+      
+      slots.sort(function(a, b) {
+        return a-b;
+      });
       return slots;
     }
     
@@ -79,8 +82,9 @@
         };
 
         mentors.forEach(function(mentor) {
-          if(slot in result[mentor]){
-            obj[mentor] = result[mentor][slot];
+          var slotStr = "S"+slot;
+          if(slotStr in result[mentor]){
+            obj[mentor] = result[mentor][slotStr];
           }
           else {
             obj[mentor] = '-';
@@ -88,7 +92,7 @@
         });
         tableData.push(obj);
       });
-      return tableData;
+      return {'data': tableData, 'mentors': mentors};
     }
 
     function getLeftovers(scheduleObj) {
@@ -107,7 +111,6 @@
       }
 
       function pickMentorFailed(error) {
-        console.log(error);
         return error;
       }
     }

@@ -9,7 +9,8 @@
     var vm = this;
     vm.menu = navbar.anonymous();
     vm.dataFull = dataFull;
-    vm.data = dataFull.tableData;
+    vm.data = dataFull.tableData.data;
     vm.leftovers = dataFull.leftovers;
+    vm.mentors = dataFull.tableData.mentors;
   };
 })();

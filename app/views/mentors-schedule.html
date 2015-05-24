@@ -1,3 +1,16 @@
 <angled-navbar menus="vm.menu"></angled-navbar>
-
+<table class="table">
+  <tr>
+    <th>Slot</th>
+    <th ng-repeat="mentor in vm.mentors">{{mentor}}</th>
+  </tr>  
+  <tr ng-repeat="slot in vm.data">
+    <td>
+      {{slot.slot}}
+    </td>
+    <td ng-repeat="mentor in vm.mentors">
+      {{slot[mentor]}}
+    </td>
+  </tr>
+</table>
 
