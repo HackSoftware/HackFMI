@@ -18,6 +18,10 @@
     function anonymous() {
       var menu = [
         {
+          title: "График",
+          action: 'schedule'
+        },
+        {
           title: "Ментори",
           action: 'showmentors'
         },
@@ -39,6 +43,10 @@
 
     function leader() {
       var menu = [
+        {
+          title: "График",
+          action: 'schedule'
+        },
         {
           title: "Ментори",
           action: 'pickmentors'
@@ -62,6 +70,10 @@
     function notinteam() {
       var menu = [
         {
+          title: "График",
+          action: 'schedule'
+        },
+        {
           title: "Ментори",
           action: 'showmentors'
         },
@@ -83,6 +95,10 @@
 
     function inteam() {
       var menu = [
+        {
+          title: "График",
+          action: 'schedule'
+        },
         {
           title: "Ментори",
           action: 'showmentors'
