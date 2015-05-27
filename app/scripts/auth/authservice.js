@@ -10,13 +10,10 @@
 
     var service = {
       login: login,
-      register: register,
-      activate: activate,
-      resetPassword: resetPassword,
-      setNewPassword: setNewPassword,
       splitName: splitName,
       info: info,
-      token: token
+      token: token,
+      fillData: fillData
     };
 
     return service;
@@ -27,31 +24,16 @@
         .error(failed);
     }
 
-    function register(user) {
-      return $http.post(DATA_URL + 'register/', user)
-        .success(complete)
-        .error(failed);
-    }
-
-    function activate(data) {
-      return $http.post(DATA_URL + 'activate/', data);
-    }
-
-    function resetPassword(email) {
-      return $http.post(DATA_URL + 'password_reset/', email)
-        .success(complete)
-        .error(failed);
-    }
-
-    function setNewPassword(data) {
-      return $http.post(DATA_URL + 'password_reset_confirm/', data)
-        .success(complete)
-        .error(failed);
-    }
-
     function info() {
       var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
       return $http.get(DATA_URL + 'me/', options)
+        .success(complete)
+        .error(failed);
+    }
+
+    function fillData(user) {
+      var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
+      return $http.post(DATA_URL + 'onboard-competitor/', user, options)
         .success(complete)
         .error(failed);
     }
@@ -72,6 +54,7 @@
     }
 
     function complete(response) {
+      console.log(response);
       return response;
     }
 

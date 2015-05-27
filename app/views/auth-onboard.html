@@ -1,35 +1,6 @@
-<angled-navbar menus="vm.smenu"></angled-navbar>
 <div class="card card-container" id="register-form" ng-hide="vm.canRegister">
-  <div class="alert alert-danger" role="alert"> Срокът за регистрация изтече! </div>
-</div>
-<div ng-show="vm.canRegister">
-  <div cc-error-box error-message="vm.errorService.errorMessage"></div>
-
   <div class="row marketing" >
-    <form class="form-horizontal" name="registerForm" ng-submit="vm.register(registerForm.$valid)" novalidate>
-
-      <div class="form-group">
-        <label class="col-sm-3 control-label">Две имена:</label>
-        <div class="col-sm-9">
-          <input type="text" name="full_name" class="form-control" ng-model="vm.user.name" required>
-          <div ng-show="registerForm.full_name.$error.required && registerForm.full_name.$touched">
-            <span class="help-block">Tова поле е задължително!</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="col-sm-3 control-label">Email:</label>
-        <div class="col-sm-9">
-          <input type="email" name="email" class="form-control" ng-model="vm.user.email" required>
-          <div ng-show="registerForm.email.$error.required && registerForm.email.$touched">
-            <span class="help-block">Tова поле е задължително!</span>
-          </div>
-          <div ng-show="registerForm.email.$invalid && registerForm.email.$touched">
-            <span class="help-block">Това не е валиден email</span>
-          </div>
-        </div>
-      </div>
+    <form class="form-horizontal" name="registerForm" ng-submit="vm.missingData(registerForm.$valid)" novalidate>
 
       <div class="form-group">
         <label class="col-sm-3 control-label">Факултетен номер:</label>
@@ -94,27 +65,6 @@
         </div>
       </div>
       <hr>
-      <div class="form-group">
-        <label class="col-sm-3 control-label">Парола:</label>
-        <div class="col-sm-9">
-          <input type="password" name="password" ng-model="password" class="form-control" required>
-          <div ng-show="registerForm.password.$error.required && registerForm.password.$touched">
-            <p>Паролата е задължителна</p>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-3 control-label">Пак парола:</label>
-        <div class="col-sm-9">
-          <input type="password" name="password2" class="form-control" ng-model="vm.user.password" cc-pwd-check="password" required>
-          <div ng-show="registerForm.password2.$error.required && registerForm.password2.$touched">
-            <p>Паролата е задължителна</p>
-          </div>
-          <div ng-show="registerForm.password2.$error.pwdmatch && registerForm.password2.$touched">
-            <p>Паролата трябва да съвпада</p>
-          </div>
-        </div>
-      </div>
 
       <div class="form-group">
         <label class="col-sm-8  control-label">Интересувам се от предложения за работа или стаж:</label>
@@ -127,20 +77,6 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="col-sm-8  control-label">
-          <a href="http://hackfmi.com/the-rules/" target="_blank">
-            Съгласен съм с условията на HackFMI5:
-          </a>
-        </label>
-        <div class="col-sm-4">
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" name="agree" ng-model="vm.user.agree" ng-init="vm.user.agree=true" required>
-            </label>
-          </div>
-        </div>
-      </div>
       <div class="text-center">
         <button type="submit" class="btn btn-primary" ng-disabled="registerForm.$invalid">
           Hack on!
