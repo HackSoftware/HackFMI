@@ -11,6 +11,7 @@
   function configure($stateProvider) {
     $stateProvider
       .state('register', {
+        url: '/register',
         controller: function($window, $location) {
           var url = $location.$$host;
           var port = $location.$$port;
@@ -44,6 +45,12 @@
         controller: 'OnboardCtrl',
         controllerAs: 'vm',
         templateUrl: 'views/auth-onboard.html',
+        data: {
+          permissions: {
+            only: ['logged'],
+            redirectTo: 'teamfind.notification'
+          }
+        },
         resolve: {
           skills: skillsPrep
         }

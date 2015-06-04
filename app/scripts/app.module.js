@@ -28,7 +28,14 @@
       
 
       Permission.defineRole('anonymous', function (stateParams) {
-        if (localStorage.length == 0) {
+        if (localStorage.getItem('token') === null) {
+          return true;
+        }
+        return false;
+      });
+
+      Permission.defineRole('logged', function (stateParams) {
+        if (localStorage.getItem !== null) {
           return true;
         }
         return false;

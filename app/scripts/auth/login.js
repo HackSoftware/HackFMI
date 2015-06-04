@@ -11,6 +11,7 @@
     vm.login = login;
     vm.user = {};
     vm.smenu = navbar.anonymous();
+    console.log(vm.errorService);
 
     function login() {
       return authservice.login(vm.user)
