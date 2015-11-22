@@ -38,13 +38,13 @@
     }
 
     function resetPassword(email) {
-      return $http.post(DATA_URL + 'password_reset/', email)
+      return $http.post(DATA_URL + 'password-reset/', email)
         .success(complete)
         .error(failed);
     }
 
     function setNewPassword(data) {
-      return $http.post(DATA_URL + 'password_reset_confirm/', data)
+      return $http.post(DATA_URL + 'password-reset-confirm/', data)
         .success(complete)
         .error(failed);
     }
