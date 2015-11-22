@@ -12,10 +12,14 @@
     $stateProvider
       .state('register', {
         url: '/register',
-        controller: function($window, $location) {
-          var url = $location.$$host;
-          var port = $location.$$port;
-          $window.location.href = 'http://localhost:9001/#/register/' + url + ':' + port;
+        templateUrl: 'views/register.html',
+        controller: 'RegisterCtrl',
+        controllerAs: 'vm',
+        data: {
+          permissions: {
+            only: ['anonymous'],
+            redirectTo: 'teamfind.notification'
+          }
         }
       })
       .state('login', {
