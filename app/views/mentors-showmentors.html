@@ -1,5 +1,11 @@
 <angled-navbar menus="vm.menu"></angled-navbar>
 <div class="card card-container" id="register-form">
+  <div ng-if="vm.mentors.length == 0">
+    <h2>Все още няма добавени ментори ;)</h2>
+
+    Върни се след време и разгледай пак!
+  </div>
+
   <div ng-repeat="mentor in vm.mentors">
     <h3>{{ mentor.name }}</h3>
     <div class="row marketing">
