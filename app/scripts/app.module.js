@@ -25,8 +25,6 @@
     })
     .run(function (Permission, authservice, teamservice) {
 
-      
-
       Permission.defineRole('anonymous', function (stateParams) {
         return localStorage.getItem('token') === null;
       });
