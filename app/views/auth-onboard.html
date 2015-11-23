@@ -77,6 +77,21 @@
         </div>
       </div>
 
+      <div class="form-group">
+        <label class="col-sm-8  control-label">
+          <a href="http://hackfmi.com/the-rules/" target="_blank">
+            Съгласен съм с условията на HackFMI.
+          </a>
+        </label>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="agree" ng-model="vm.user.agree" ng-init="vm.user.agree=true" required>
+            </label>
+          </div>
+        </div>
+      </div>
+
       <div class="text-center">
         <button type="submit" class="btn btn-primary" ng-disabled="registerForm.$invalid">
           Hack on!
