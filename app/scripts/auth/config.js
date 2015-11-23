@@ -12,13 +12,9 @@
     $stateProvider
       .state('register', {
         url: '/register',
-        templateUrl: 'views/auth-register.html',
+        templateUrl: 'views/register.html',
         controller: 'RegisterCtrl',
         controllerAs: 'vm',
-        resolve: {
-          skills: skillsPrepService,
-          season: seasonPrep
-        },
         data: {
           permissions: {
             only: ['anonymous'],
@@ -38,51 +34,6 @@
           }
         }
       })
-      .state('activate-msg', {
-        templateUrl: 'views/auth-activate.html'
-      })
-      .state('activate', {
-        url: '/activate/:uid/:token',
-        controller: 'ActivateCtrl',
-        controllerAs: 'vm',
-        templateUrl: 'views/auth-activate-success.html',
-        data: {
-          permissions: {
-            only: ['anonymous'],
-            redirectTo: 'teamfind.notification'
-          }
-        }
-      })
-      .state('resetpassword', {
-        url: '/resetpassword',
-        templateUrl: 'views/auth-resetpassword.html',
-        controller: 'resetPasswordCtrl',
-        controllerAs: 'vm',
-        data: {
-          permissions: {
-            only: ['anonymous'],
-            redirectTo: 'teamfind.notification'
-          }
-        }
-      })
-      .state('resetpassword-success', {
-        templateUrl: 'views/auth-resetpassword-success.html'
-      })
-      .state('setnewpassword', {
-        url: '/reset-confirm/:uid/:token',
-        templateUrl: 'views/auth-setnewpassword.html',
-        controller: 'setNewPasswordCtrl',
-        controllerAs: 'vm',
-        data: {
-          permissions: {
-            only: ['anonymous'],
-            redirectTo: 'teamfind.notification'
-          }
-        }
-      })
-      .state('setnewpassword-success', {
-        templateUrl: 'views/auth-setnewpassword-success.html'
-      })
       .state('logout', {
         url: '/logout',
         controller: 'LogoutCtrl',
@@ -92,19 +43,29 @@
             redirectTo: 'login'
           }
         }
+      })
+      .state('onboard', {
+        url: '/data',
+        controller: 'OnboardCtrl',
+        controllerAs: 'vm',
+        templateUrl: 'views/auth-onboard.html',
+        data: {
+          permissions: {
+            only: ['logged'],
+            redirectTo: 'teamfind.notification'
+          }
+        },
+        resolve: {
+          skills: skillsPrep
+        }
       });
-  }
-  function seasonPrep(dataservice) {
-    return dataservice.getSeason()
-      .then(function(response) {
-        return response.data[0];
-      });
-  }
-  function skillsPrepService(dataservice) {
-    return dataservice.getSkills();
-  }
-  function getStatus(authservice) {
-    return authservice.info();
-  }
 
+    function skillsPrep(dataservice) {
+      return dataservice.getSkills()
+        .then(function(response) {
+          console.log(response);
+          return response;
+        });
+    }
+  }
 })();

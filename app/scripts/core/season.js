@@ -3,14 +3,15 @@
   
   angular
     .module('hackfmiApp.core')
-    .controller('seasonCtrl', seasonCtrl);
+    .controller('SeasonCtrl', SeasonCtrl);
   
-  function seasonCtrl(dataservice) {
+  function SeasonCtrl(dataservice) {
     var vm = this;
     vm.smthing = "lil";
     
     dataservice.getSeason()
       .then(function(response) {
+        console.log(response);
         vm.season = response.data[0];
       });
   };

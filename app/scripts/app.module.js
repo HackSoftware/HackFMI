@@ -25,20 +25,19 @@
     })
     .run(function (Permission, authservice, teamservice) {
 
-      
-
       Permission.defineRole('anonymous', function (stateParams) {
-        if (localStorage.length == 0) {
-          return true;
-        }
-        return false;
+        return localStorage.getItem('token') === null;
+      });
+
+      Permission.defineRole('logged', function (stateParams) {
+        return localStorage.getItem('token') !== null;
       });
 
       Permission.defineRole('leader', function (stateParams) {
         if(localStorage.length > 0) {
           return authservice.info()
             .then(function (response) {
-              if (response.data.teammembership_set.length == 0) {
+              if (response.data.teammembership_set.length === 0) {
                 return false;
               }
 

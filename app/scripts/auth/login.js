@@ -11,12 +11,18 @@
     vm.login = login;
     vm.user = {};
     vm.smenu = navbar.anonymous();
+    console.log(vm.errorService);
 
     function login() {
       return authservice.login(vm.user)
         .then(function(response) {
           localStorage.setItem('token', response.data.auth_token);
-          $state.go('teamfind.notification');
+          if(response.status === 206) {
+            $state.go('onboard');
+          }
+          if (response.status === 200) {
+            $state.go('teamfind.notification');
+          }
         });
     }
   }
