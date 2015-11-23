@@ -1,1 +1,24 @@
 <angled-navbar menus="vm.smenu"></angled-navbar>
+
+<h2>Регистрация за <span ng-bind-html="vm.season.name"></span> - <span ng-bind-html="vm.season.topic"</span></h2>
+
+<h3>Имаш акаунт в Хак България, бил си на HackConf 2015 или пък си участвал на предишния хакатон?</h3>
+
+<p>
+  То тогава имаш регистрация.
+</p>
+
+<ul>
+  <li>
+    <a ui-sref="login">Може да се насочиш директно лъм Login и допълване на нужната информация + създаване на отбор.</a>
+  </li>
+  <li><a href="https://education.hackbulgaria.com/#/resetpassword">Ако си забравил своята парола, винаги можеш да я възстановиш.</a></li>
+</ul>
+<h3>Нямаш акаунт?</h3>
+
+<p>За да се регистрираш за <span ng-bind-html="vm.season.name"></span>, трябва да направиш следното:</p>
+
+<ul>
+  <li><a href="https://education.hackbulgaria.com/#/register">Да се регистрираш в основната система на Хак България, която се намира тук.</a></li>
+  <li>След като си потвърдил email-а, <a ui-sref="login">може спокойно да отидеш и да се логнеш,</a> за да довършиш нужната регистрация за <span ng-bind-html="vm.season.name"></span>.</li>
+</ul>
