@@ -33,7 +33,7 @@
     }
 
     function mentorsSchedule() {
-      return $http.get(DATA_URL + 'schedule_json/')
+      return $http.get(DATA_URL + 'schedule-json/')
         .then(function(response) {
           var ordered = scheduleOrder(angular.fromJson(response.data));
           var leftovers = angular.fromJson(response.data).leftovers;
