@@ -71,7 +71,7 @@
     function leaveTeam() {
       var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
       var data = {};
-      return $http.post(DATA_URL + 'leave_team/', data, options)
+      return $http.post(DATA_URL + 'leave-team/', data, options)
         .success(complete)
         .error(failed);
     }
