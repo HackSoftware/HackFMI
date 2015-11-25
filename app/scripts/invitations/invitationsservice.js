@@ -36,8 +36,16 @@
     }
 
     function decline(invitationId) {
-      return $http.delete(DATA_URL + 'invitation/', { params: {'id': invitationId}, headers: { 'Authorization': 'Token ' + localStorage.token }}
-                         );
+      var config = {
+        data: {
+          'id': invitationId
+        },
+        headers: {
+          'Authorization': 'Token ' + localStorage.token,
+          'Content-Type': 'application/json'
+        }
+      }
+      return $http.delete(DATA_URL + 'invitation/', config);
     }
   }
 
