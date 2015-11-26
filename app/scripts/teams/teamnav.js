@@ -9,10 +9,10 @@
     var vm = this;
 
     vm.me = me;
-    if(me.teammembership_set.length == 0) {
+    if(me.current_teammembership_set.length == 0) {
       vm.menu = navbar.notinteam();
     }
-    else if (me.teammembership_set[0].is_leader == true) {
+    else if (me.current_teammembership_set[0].is_leader == true) {
       vm.menu = navbar.leader();
     }
     else {

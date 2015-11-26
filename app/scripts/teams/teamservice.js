@@ -47,7 +47,7 @@
 
     function leader(members) {
       return members.filter(function(member) {
-        return member.teammembership_set[0].is_leader == true;
+        return member.current_teammembership_set[0].is_leader == true;
       })[0];
     }
 

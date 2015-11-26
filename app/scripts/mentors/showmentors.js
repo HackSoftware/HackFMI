@@ -13,7 +13,7 @@
     else {
       authservice.info()
         .then(function(response) {
-          if(response.data.teammembership_set.length == 0 ) {
+          if(response.data.current_teammembership_set.length == 0 ) {
             vm.menu = navbar.notinteam();
           }
           else {

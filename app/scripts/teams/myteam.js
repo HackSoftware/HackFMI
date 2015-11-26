@@ -14,7 +14,7 @@
     vm.leader = teamservice.leader(vm.team.members);
     vm.techNames = teamservice.concatenate(vm.team.technologies_full);
 
-    if(me.teammembership_set[0].is_leader == true) {
+    if(me.current_teammembership_set[0].is_leader == true) {
       vm.menu = navbar.leader();
     }
     else {
