@@ -61,8 +61,6 @@
     function getMyTeam(team) {
       var options = { headers: { 'Authorization': 'Token ' + localStorage.token }},
           teamId = team.id;
-      console.log(teamId);
-      debugger;
       return $http.get(DATA_URL + 'teams/' + teamId + '/', options);
     }
 
