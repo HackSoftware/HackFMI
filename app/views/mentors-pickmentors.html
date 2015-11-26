@@ -1,6 +1,9 @@
 <angled-navbar menus="vm.menu"></angled-navbar>
 <div class="card card-container" id="register-form">
-  <div class="alert alert-warning" role="alert">Можете да изберете максимум 7 ментора.</div>
+  <div ng-if="!vm.canPick">
+    Все още няма възможност за избиране на ментори.
+  </div>
+  <div ng-if="vm.canPick" class="alert alert-warning" role="alert">Можете да изберете максимум 7 ментора.</div>
   <div ng-repeat="mentor in vm.mentors">
     <h3>{{ mentor.name }}</h3>
     <div class="row">

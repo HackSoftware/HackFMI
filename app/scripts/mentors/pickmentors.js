@@ -8,6 +8,7 @@
   function PickMentors($q, $sce, mentorservice, teamservice, mentors, myTeam, navbar, canPickMentors) {
     var vm = this;
     vm.team = myTeam;
+    console.log(canPickMentors);
     vm.canPick = canPickMentors;
     vm.menu = navbar.leader();
     
