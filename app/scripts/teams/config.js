@@ -107,7 +107,7 @@
     function myTeam(authservice, teamservice) {
       return authservice.info()
         .then(function(response) {
-          return response.data.teammembership_set[0].team;
+          return response.data.current_teammembership_set[0].team;
         })
         .then(function(team) {
           return teamservice.getMyTeam(team)

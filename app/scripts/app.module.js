@@ -37,11 +37,11 @@
         if(localStorage.length > 0) {
           return authservice.info()
             .then(function (response) {
-              if (response.data.teammembership_set.length === 0) {
+              if (response.data.current_teammembership_set.length === 0) {
                 return false;
               }
 
-              if (response.data.teammembership_set[0].is_leader === true) {
+              if (response.data.current_teammembership_set[0].is_leader === true) {
                 return true;
               }
               return false;
@@ -54,7 +54,7 @@
         if(localStorage.length > 0) {
           return authservice.info()
             .then(function (response) {
-              if (response.data.teammembership_set.length == 0) {
+              if (response.data.current_teammembership_set.length == 0) {
                 return true;
               }
               return false;
@@ -67,7 +67,7 @@
         if(localStorage.length > 0) {
           return authservice.info()
             .then(function (response) {
-              if (response.data.teammembership_set.length > 0) {
+              if (response.data.current_teammembership_set.length > 0) {
                 return true;
               }
               return false;
