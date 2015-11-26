@@ -84,8 +84,8 @@
   function myTeam(authservice, teamservice) {
     return authservice.info()
       .then(function(response) {
-        var tid = response.data.teammembership_set[0].team;
-        return teamservice.getMyTeam(tid)
+        return response.data.teammembership_set[0].team;
+        return teamservice.getMyTeam(team)
           .then(function(response) {
             return response.data[0];
           });
