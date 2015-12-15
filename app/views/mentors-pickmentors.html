@@ -8,7 +8,7 @@
     <h3>{{ mentor.name }}</h3>
     <div class="row">
       <div class="col-sm-4 text-center">
-        <img ng-src="{{ mentor.picture }}" alt="{{ mentor.name }}" class="thumbnail col-sm-12">
+        <img ng-src="/media/{{ mentor.picture }}" alt="{{ mentor.name }}" class="thumbnail col-sm-12">
         <div ng-show="vm.canPick">
           <button class="btn btn-primary" ng-click="vm.addMentor(mentor.id)" ng-show="vm.team.mentors.indexOf(mentor.id)==-1" ng-disabled="vm.team.mentors.length >= 7">
             Избери за ментор
