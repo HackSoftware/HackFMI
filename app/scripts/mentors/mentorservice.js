@@ -102,7 +102,7 @@
     function pickMentor(mentorId, teamId) {
       var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
 
-      return $http.put(DATA_URL + 'assign_mentor/', { id: mentorId, team_id: teamId }, options)
+      return $http.put(DATA_URL + 'assign-mentor/', { id: mentorId, team_id: teamId }, options)
         .then(pickMentorComplete)
         .catch(pickMentorFailed);
 
@@ -118,7 +118,7 @@
     function unpickMentor(mentorId, teamId) {
       var options = { headers: { 'Authorization': 'Token ' + localStorage.token }};
 
-      return $http.post(DATA_URL + 'assign_mentor/', { id: mentorId, team_id: teamId }, options)
+      return $http.post(DATA_URL + 'assign-mentor/', { id: mentorId, team_id: teamId }, options)
         .then(unpickMentorComplete)
         .catch(unpickMentorFailed);
 
