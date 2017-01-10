@@ -1,5 +1,7 @@
 # HackFMI
 
+**This system is no longer supported in favor of the [NG2 version](https://github.com/HackSoftware/HackFMI-NG2)**
+
 The system that we use for HackFMI
 
 ## Requirements
